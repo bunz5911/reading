@@ -432,8 +432,8 @@
         .cta-button-large {
             display: inline-block;
             padding: 20px 50px;
-            background: white;
-            color: #764ba2;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             font-size: 20px;
             font-weight: 700;
             text-decoration: none;
@@ -452,8 +452,31 @@
 
         .cta-note {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #666;
             margin-top: 16px;
+            text-align: center;
+        }
+
+        .cta-content {
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #888;
         }
 
         /* Google Form 반응형 컨테이너 */
@@ -614,7 +637,7 @@
                 
                 <div class="methods-grid">
                     <!-- Method 1 -->
-                    <div class="method-card" style="background-image: url('public/img/Freezing.png');">
+                    <div class="method-card" style="background-image: url('images/freezing.png');">
                         <div class="method-content">
                             <div class="method-badge">Method 1</div>
                             <h3 class="method-title">생산 효과 (Production Effect)</h3>
@@ -630,7 +653,7 @@
                     </div>
 
                     <!-- Method 2 -->
-                    <div class="method-card" style="background-image: url('public/img/bodygard.png');">
+                    <div class="method-card" style="background-image: url('images/bodygard.png');">
                         <div class="method-content">
                             <div class="method-badge">Method 2</div>
                             <h3 class="method-title">쉐도잉 (Shadowing)</h3>
@@ -646,7 +669,7 @@
                     </div>
 
                     <!-- Method 3 -->
-                    <div class="method-card" style="background-image: url('public/img/translation.png');">
+                    <div class="method-card" style="background-image: url('images/translation.png');">
                         <div class="method-content">
                             <div class="method-badge">Method 3</div>
                             <h3 class="method-title">직접 흡수 (Direct Absorption)</h3>
@@ -662,7 +685,7 @@
                     </div>
 
                     <!-- Method 4 -->
-                    <div class="method-card" style="background-image: url('public/img/overload.png');">
+                    <div class="method-card" style="background-image: url('images/overload.png');">
                         <div class="method-content">
                             <div class="method-badge">Method 4</div>
                             <h3 class="method-title">짧은 이야기의 힘</h3>
@@ -813,24 +836,45 @@
             </div>
         </section>
 
-        <!-- Final Call 섹션 -->
-        <section class="final-call">
-            <h2 class="final-call-title">30일 후, 당신의 한국어는<br>완전히 달라져 있을 것입니다</h2>
-            <p class="final-call-text">더 이상 '아는데 못하는' 답답함을 느끼지 마세요.<br>과학적으로 검증된 방법으로 진짜 말하기 실력을 만드세요.</p>
-            
-            <a href="#methods" class="cta-button-large">지금 바로 시작하기</a>
-            <p class="cta-note">
-                ✓ 30일 집중 프로그램 ✓ 과학적 방법론 ✓ 실전 중심 학습
-            </p>
-            
-            <!-- 반응형 Google Form 컨테이너 -->
-            <div class="form-container">
-                <div class="form-wrapper">
-                    <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">로드 중…</iframe>
+        <!-- CTA 섹션 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="cta-content">
+                    <h2 class="section-title">
+                        30일 후, 당신의 한국어는<br>
+                        완전히 달라져 있을 것입니다
+                    </h2>
+                    <p class="section-subtitle">
+                        더 이상 '아는데 못하는' 답답함을 느끼지 마세요.<br>
+                        과학적으로 검증된 방법으로 진짜 말하기 실력을 만드세요.
+                    </p>
+                    <a href="#methods" class="cta-button-large">지금 바로 시작하기</a>
+                    <p class="cta-note">
+                        ✓ 30일 집중 프로그램 ✓ 과학적 방법론 ✓ 실전 중심 학습
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Form 섹션 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <!-- 반응형 Google Form 컨테이너 -->
+                <div class="form-container">
+                    <div class="form-wrapper">
+                        <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">로드 중…</iframe>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 한국어 말하기 마스터. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // 스크롤 애니메이션 처리
