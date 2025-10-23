@@ -16,6 +16,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             overflow-x: hidden;
+            line-height: 1.7;
         }
 
         /* 고정 헤더 네비게이션 */
@@ -95,11 +96,11 @@
         }
 
         .hero-title {
-            font-size: clamp(36px, 6vw, 64px);
+            font-size: clamp(32px, 5vw, 56px);
             font-weight: 700;
             margin-bottom: 24px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .hero-highlight {
@@ -108,30 +109,10 @@
         }
 
         .hero-description {
-            font-size: clamp(16px, 2.5vw, 22px);
+            font-size: clamp(16px, 2.5vw, 20px);
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 32px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 18px 40px;
-            background: white;
-            color: #764ba2;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
         /* 컨텐츠 섹션 */
@@ -152,197 +133,128 @@
         }
 
         .section-wrapper {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: clamp(28px, 5vw, 48px);
+            font-size: clamp(28px, 4vw, 42px);
             font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 16px;
-            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.3;
         }
 
         .section-subtitle {
-            font-size: 18px;
-            color: #666;
-            text-align: center;
-            margin-bottom: 48px;
-            line-height: 1.6;
-        }
-
-        /* 문제 카드 그리드 */
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
-        }
-
-        .problem-card {
-            background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .problem-card:hover {
-            transform: translateY(-8px);
-            border-color: #667eea;
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
-        }
-
-        .problem-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .problem-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-
-        .problem-card p {
-            font-size: 15px;
+            font-size: clamp(16px, 2vw, 20px);
             color: #555;
-            line-height: 1.6;
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
 
-        /* 방법 카드 그리드 */
-        .methods-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
+        .section-content {
+            font-size: 17px;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 24px;
         }
 
-        .method-card {
+        .section-content strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .highlight-box {
             background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            border-left: 4px solid #667eea;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 24px 0;
         }
 
-        .method-card:hover {
-            transform: translateY(-8px);
-            border-color: #667eea;
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
+        /* 방법 카드 */
+        .method-section {
+            margin: 48px 0;
         }
 
-        .method-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 1;
-        }
-
-        .method-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .method-badge {
-            display: inline-block;
+        .method-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 20px 28px;
+            border-radius: 12px 12px 0 0;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .method-title {
-            font-size: 22px;
+        .method-body {
+            background: #f9fafb;
+            padding: 32px 28px;
+            border-radius: 0 0 12px 12px;
+            border: 2px solid #e5e7eb;
+            border-top: none;
+        }
+
+        .method-problem {
+            margin-bottom: 24px;
+        }
+
+        .method-problem h4 {
+            color: #dc2626;
+            font-size: 18px;
             font-weight: 700;
-            color: #1a1a1a;
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .method-description {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 16px;
+        .method-solution h4 {
+            color: #059669;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .method-evidence {
-            font-size: 13px;
-            color: #888;
-            font-style: italic;
-            padding: 12px;
             background: rgba(102, 126, 234, 0.1);
-            border-radius: 8px;
             border-left: 3px solid #667eea;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 15px;
+            font-style: italic;
+            color: #555;
         }
 
-        /* 혜택 카드 그리드 */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
+        /* 혜택 리스트 */
+        .benefits-list {
+            list-style: none;
+            margin: 32px 0;
         }
 
-        .benefit-card {
+        .benefits-list li {
             background: white;
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            border: 2px solid #f0f0f0;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
-        .benefit-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            border-color: #667eea;
+        .benefits-list li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
         }
 
-        .benefit-number {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-
-        .benefit-card h3 {
+        .benefits-list li strong {
+            display: block;
             font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-
-        .benefit-card p {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.6;
+            color: #667eea;
+            margin-bottom: 8px;
         }
 
         /* 후기 섹션 */
@@ -360,7 +272,6 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
             border: 2px solid #f0f0f0;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .testimonial-card:hover {
@@ -403,37 +314,36 @@
             color: #888;
         }
 
-        /* Final Call 섹션 */
-        .final-call {
+        /* CTA 섹션 */
+        .cta-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 40px 24px;
             border-radius: 24px;
-            padding: 20px 40px;
+            padding: 60px 40px;
             text-align: center;
             color: white;
         }
 
-        .final-call-title {
-            font-size: 16pt;
+        .cta-title {
+            font-size: clamp(28px, 4vw, 48px);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1.3;
         }
 
-        .final-call-text {
-            font-size: clamp(12px, 1.8vw, 16px);
-            line-height: 1.4;
-            margin-bottom: 16px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .cta-description {
+            font-size: clamp(16px, 2vw, 22px);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.95);
         }
 
-        .cta-button-large {
+        .cta-button {
             display: inline-block;
-            padding: 20px 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 18px 48px;
+            background: white;
+            color: #764ba2;
             font-size: 20px;
             font-weight: 700;
             text-decoration: none;
@@ -442,23 +352,37 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 16px;
         }
 
-        .cta-button-large:hover {
+        .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .cta-note {
-            font-size: 14px;
-            color: #666;
-            margin-top: 16px;
-            text-align: center;
+        /* Google Form 반응형 컨테이너 */
+        .form-container {
+            max-width: 640px;
+            margin: 32px auto 0;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
-        .cta-content {
-            text-align: center;
+        .form-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 140%;
+            overflow: hidden;
+        }
+
+        .form-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Footer */
@@ -479,31 +403,11 @@
             color: #888;
         }
 
-        /* Google Form 반응형 컨테이너 */
-        .form-container {
-            max-width: 640px;
-            margin: 32px auto 0;
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-
-        .form-wrapper {
-            position: relative;
-            width: 100%;
-            /* 높이를 너비의 140%로 설정 (700/640 비율 유지) */
-            padding-top: 140%;
-            overflow: hidden;
-        }
-
-        .form-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+        /* 구분선 */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 48px 0;
         }
 
         /* 모바일 반응형 */
@@ -522,48 +426,38 @@
                 border-radius: 16px;
             }
 
-            .problems-grid,
-            .methods-grid,
-            .benefits-grid,
+            .method-header {
+                font-size: 20px;
+                padding: 16px 20px;
+            }
+
+            .method-body {
+                padding: 24px 20px;
+            }
+
+            .cta-section {
+                margin: 24px 16px;
+                padding: 40px 24px;
+            }
+
             .testimonials-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
             }
 
-            .final-call {
-                margin: 16px 12px;
-                padding: 12px 16px;
-                border-radius: 12px;
-            }
-
-            .final-call-title {
-                font-size: 14pt;
-                margin-bottom: 8px;
-            }
-
-            .final-call-text {
-                font-size: clamp(10px, 1.5vw, 14px);
-                margin-bottom: 12px;
-            }
-
-            /* 모바일에서 폼 컨테이너 여백 조정 */
             .form-container {
                 margin: 32px 16px 0;
                 border-radius: 8px;
-                /* iframe 터치 시 부드러운 스크롤 */
                 scroll-margin-top: 20px;
                 scroll-margin-bottom: 20px;
-                /* 부드러운 전환 */
                 transition: transform 0.2s ease;
             }
 
             .form-wrapper {
                 padding-top: 160%;
-                /* 키보드 대응 */
                 min-height: 400px;
             }
 
-            /* 터치 시 살짝 위로 이동 */
             .form-container:active {
                 transform: translateY(-10px);
             }
@@ -590,152 +484,189 @@
             <div class="hero-content">
                 <div class="hero-badge">30일 집중 프로그램</div>
                 <h1 class="hero-title">
-                    한국어를 <span class="hero-highlight">알지만</span><br>
-                    <span class="hero-highlight">말하지 못하는</span> 당신을 위한<br>
-                    과학적 솔루션
+                    입 밖으로 꺼내지 못하는 한국어,<br>
+                    왜 <span class="hero-highlight">'알지만'</span> 말할 수 없을까요?
                 </h1>
                 <p class="hero-description">
-                    중급 이상의 한국어 실력을 가졌지만 막상 말하려면 막히는 경험, 있으신가요?<br>
-                    이제 '지식의 함정'에서 벗어나 진짜 한국어 말하기를 시작하세요.
+                    열심히 외운 단어가 원어민 앞에서는 감쪽같이 사라집니다.<br>
+                    알고 있는 한국어를 입 밖으로 꺼내는 방법, 지금부터 시작합니다.
                 </p>
-                <a href="#methods" class="cta-button">지금 시작하기</a>
             </div>
         </section>
 
-        <!-- 문제 섹션 -->
+        <!-- 문제 인식 섹션 -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">이런 고민, 하고 계신가요?</h2>
+                <h2 class="section-title">혹시 이런 경험을 해보셨나요?</h2>
                 
-                <div class="problems-grid">
-                    <div class="problem-card">
-                        <div class="problem-icon">💭</div>
-                        <h3>머릿속으론 알겠는데...</h3>
-                        <p>단어도 알고 문법도 아는데 막상 말하려면 입이 안 떨어져요</p>
-                    </div>
-                    <div class="problem-card">
-                        <div class="problem-icon">⏱️</div>
-                        <h3>생각하는 시간이 너무 길어요</h3>
-                        <p>한국어로 말하기 전에 머릿속에서 번역하느라 시간이 오래 걸려요</p>
-                    </div>
-                    <div class="problem-card">
-                        <div class="problem-icon">📚</div>
-                        <h3>공부는 많이 했는데...</h3>
-                        <p>교재도 여러 권 봤고 강의도 들었는데 실전에서는 여전히 어려워요</p>
-                    </div>
+                <div class="section-content">
+                    <p>열심히 외운 단어가 원어민 앞에서는 감쪽같이 사라집니다. 문법은 아는데, 막상 말하려고 하면 머릿속이 새하얗게 변하며 얼어붙게 됩니다. 끊임없이 한국어를 자신의 모국어로 번역하는 습관 때문에, 대화의 속도를 따라가지 못하고 '어버버'하다가 타이밍을 놓치곤 하죠.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>많은 학습자들이 "언어 지식의 함정"에 빠져 있습니다.</strong></p>
+                    <p>당신의 소중한 한국어 실력이 실제로 사용되지 못하고, 마치 창고에 쌓인 채 잠자고 있는 보물처럼 <strong>'뇌 속의 저장 공간'</strong> 어딘가에 갇혀 있을 수 있습니다.</p>
+                </div>
+
+                <div class="section-content">
+                    <p><strong>알고 있는 한국어를 입 밖으로 꺼내는 방법.</strong> 지금부터 그 딜레마를 부수고, <strong>"말하는 한국어"</strong>로 레벨업하는 4가지 과학적 해법을 제시합니다.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 방법 섹션 -->
-        <section id="methods" class="content-section">
-            <div class="section-wrapper">
-                <h2 class="section-title">4가지 과학적 치트키</h2>
-                <p class="section-subtitle">
-                    언어학 연구로 검증된 방법으로 30일 만에 말하기 능력을 깨우세요
-                </p>
-                
-                <div class="methods-grid">
-                    <!-- Method 1 -->
-                    <div class="method-card" style="background-image: url('images/freezing.png');">
-                        <div class="method-content">
-                            <div class="method-badge">Method 1</div>
-                            <h3 class="method-title">생산 효과 (Production Effect)</h3>
-                            <p class="method-description">
-                                소리 내어 읽으면 뇌의 운동 영역이 활성화되어 기억이 7배 강화됩니다.
-                                단순히 '아는 것'에서 '사용할 수 있는 것'으로 전환됩니다.
-                            </p>
-                            <div class="method-evidence">
-                                <strong>과학적 근거:</strong> MacLeod et al. (2010) - 소리 내어 읽은 정보는
-                                묵독한 정보보다 기억 재생률이 현저히 높음
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Method 2 -->
-                    <div class="method-card" style="background-image: url('images/bodygard.png');">
-                        <div class="method-content">
-                            <div class="method-badge">Method 2</div>
-                            <h3 class="method-title">쉐도잉 (Shadowing)</h3>
-                            <p class="method-description">
-                                원어민의 말을 그림자처럼 따라하면서 자연스러운 억양, 리듬, 발음을
-                                체화합니다. 통역사들이 사용하는 검증된 훈련법입니다.
-                            </p>
-                            <div class="method-evidence">
-                                <strong>과학적 근거:</strong> Hamada (2016) - 쉐도잉은 듣기 능력뿐만 아니라
-                                말하기 유창성을 동시에 향상시킴
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Method 3 -->
-                    <div class="method-card" style="background-image: url('images/translation.png');">
-                        <div class="method-content">
-                            <div class="method-badge">Method 3</div>
-                            <h3 class="method-title">직접 흡수 (Direct Absorption)</h3>
-                            <p class="method-description">
-                                모국어로 번역하지 않고 한국어를 한국어로 이해합니다.
-                                이것이 '생각 없이 튀어나오는' 말하기의 비밀입니다.
-                            </p>
-                            <div class="method-evidence">
-                                <strong>과학적 근거:</strong> Kroll & Stewart (1994) - 직접 개념 연결이
-                                번역 과정보다 빠르고 자연스러운 언어 산출을 가능하게 함
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Method 4 -->
-                    <div class="method-card" style="background-image: url('images/overload.png');">
-                        <div class="method-content">
-                            <div class="method-badge">Method 4</div>
-                            <h3 class="method-title">짧은 이야기의 힘</h3>
-                            <p class="method-description">
-                                문맥이 있는 짧은 이야기로 학습하면 단어와 표현이 자연스럽게
-                                연결되어 기억됩니다. 지루한 단어 암기는 이제 그만!
-                            </p>
-                            <div class="method-evidence">
-                                <strong>과학적 근거:</strong> Nation (2013) - 맥락 속 학습이 고립된 단어
-                                학습보다 장기 기억과 실제 사용 능력에서 우수함
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 혜택 섹션 -->
+        <!-- 4가지 치트키 소개 -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">왜 짧은 이야기인가?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-number">01</div>
-                        <h3>자연스러운 문맥</h3>
-                        <p>실제 대화에서 사용되는 방식 그대로 표현을 익힙니다</p>
+                <h2 class="section-title">지금부터 4가지 과학적 "치트 키"를 사용해보세요!</h2>
+                
+                <div class="highlight-box">
+                    <p><strong>핵심은 단 하나입니다.</strong></p>
+                    <p>당신의 뇌가 언어를 저장한 <strong>"잘못된 폴더"</strong>에서 실제로 사용할 수 있는 <strong>자동 실행 폴더(Auto-Execute Folder)</strong>로 지식을 옮기는 것입니다.</p>
+                    <p>바로 <strong>"소리 내어 읽기(Reading Aloud)"</strong>를 통해서요!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 1 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        1. 머릿속의 지식을 '소리'로 전환하여 몸에 입력하세요!
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(생산 효과: 기억력 최대 20% 향상)</div>
                     </div>
-                    <div class="benefit-card">
-                        <div class="benefit-number">02</div>
-                        <h3>부담 없는 길이</h3>
-                        <p>하루 10-15분이면 충분. 바쁜 일상 속에서도 꾸준히 할 수 있습니다</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-number">03</div>
-                        <h3>반복 학습 최적화</h3>
-                        <p>짧아서 여러 번 반복하기 쉽고, 반복할수록 자동화됩니다</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-number">04</div>
-                        <h3>즉각적인 성취감</h3>
-                        <p>매일 하나씩 완성하며 느끼는 성취감이 동기부여가 됩니다</p>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ 문제:</h4>
+                            <p>눈으로만 공부한 단어나 문장은 뇌의 <strong>"보관소(Archive)"</strong>에 잠겨 있습니다. 이 지식을 입으로 꺼내려면 <strong>'검색, 확인, 출력'</strong>이라는 복잡한 과정을 거쳐야 하죠. 이 과정이 당신의 말하기 속도를 치명적으로 늦춥니다.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ 해결:</h4>
+                            <p>언어는 머리 속에 "담겨 있는 것"을 <strong>"소리"</strong>로 바꿔서 사용하고 입력해야 합니다. 단어를 소리 내어 말하는 순간, 뇌는 그 단어에 <strong>"당신의 목소리"</strong>를 태그하고, 단순한 지식이 아닌 <strong>"소중한 기억(Precious Memory)"</strong>으로 분류됩니다. 이 기억은 장기 기억으로 점프하여, 필요할 때 즉시 호출되는 <strong>"자동화된 언어 능력"</strong>이 됩니다.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 과학적 근거:</strong> 소리 내어 말하기(Production)는 묵독(Silent Reading)에 비해 기억력 유지율을 최대 20%까지 향상시킵니다. (MacLeod et al., 2010. University of Waterloo Study)
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Method 2 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        2. 머뭇거리지 마세요!
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(언어 근육을 키우는 쉐도잉)</div>
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ 문제:</h4>
+                            <p>문법적 오류나 원어민 속도에 대한 부담감 때문에 말하는 도중 자주 머뭇거리거나 리듬을 끊게 됩니다. 이 습관은 자연스러운 말하기 향상에 가장 큰 적입니다.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ 해결:</h4>
+                            <p><strong>"소리내어 읽기, 즉 쉐도잉(Shadowing)"</strong>은 원어민의 오디오를 실시간으로 따라 하며 마치 <strong>"언어 자동판매기"</strong>를 사용하는 것과 같습니다. 이 훈련은 한국어의 억양과 리듬(운율, Prosody)을 당신의 뇌 근육 기억에 직접 새겨 넣어, 생각보다 말이 먼저 나가는 <strong>"무의식적 언어 처리 능력"</strong>을 극대화합니다.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 과학적 근거:</strong> 쉐도잉은 발음의 정확성과 구어 유창성을 높이는 데 가장 효율적인 기술로 입증되었습니다. (Hamada & Suzuki, 2022. Related Research)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 3 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        3. 자기 나라 말로 창작하지 마세요!
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(진짜 한국어를 소리로 흡수하는 법)</div>
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ 문제:</h4>
+                            <p>한국어를 들을 때마다 뇌는 한국어를 자신의 모국어로 번역하는 작업을 끊임없이 수행합니다. 말할 때도 모국어로 문장을 창작한 후 한국어로 번역하는 과정을 거칩니다. 이는 말도 느리게 하기도 하며, 심지어 어색한 표현을 만드는 결정적인 원인입니다.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ 해결:</h4>
+                            <p>진짜 한국인이 쓰는 말을 소리로 읽고 말로 표현하세요. <strong>"소리(Audio) + 짧은 이야기(Short Story)"</strong>의 조합은 이 번역 과정을 완전히 건너뛰게 합니다. 학습자는 문장을 전체 맥락(full context) 속에서 흡수하고, 한국어를 한국어 그 자체로 받아들여 즉시 반응할 수 있게 됩니다.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 과학적 근거:</strong> 단순히 내용을 이해하는 데 초점을 맞춘 학습(Comprehension-focused study)이 아니라 읽고 말하기 연습(Production practice)에 비중을 둔 읽기 연습이 어휘와 문법적 이해를 더욱 효과적으로 개선합니다. (Cognitive Load Theory)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 4 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        4. 짧고 깊이 있는 이야기로 디테일까지 섭렵하세요!
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ 문제:</h4>
+                            <p>길고 복잡한 텍스트를 접하면 겁이납니다 (Cognitive Load). 이는 학습자의 <strong>'기억(Working Memory)'</strong> 효율을 떨어뜨려 피로도를 높이고 결국 포기하게 됩니다.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ 해결:</h4>
+                            <p><strong>짧은 이야기(Short stories)</strong>는 뇌가 피로 없이 처리할 수 있는 <strong>"최적의 데이터 단위"</strong>입니다. 짧은 이야기로 학습하면 이야기를 완벽하게 이해하고, 그 이해를 바탕으로 문장 구조와 어휘 사용의 작은 디테일까지 모두 섭렵할 수 있습니다. 짧은 분량 덕분에 전체 맥락을 놓치지 않고 흡수합니다.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 과학적 근거:</strong> 정보 부하를 관리하면 작업 기억 효율이 높아지고 학습 성공률이 크게 개선됩니다. (Hopman & MacDonald, 2018. Wisconsin-Madison University)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 왜 짧은 스토리인가 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">왜 '짧은 스토리'가 당신의 유창성을 폭발적으로 끌어올릴까요?</h2>
+                
+                <p class="section-content">우리가 짧은 이야기 학습을 강력히 추천하는 이유는 중급 학습자가 유창성에 도달하기 위한 가장 효율적이고 재미있는 도구이기 때문입니다.</p>
+
+                <ul class="benefits-list">
+                    <li>
+                        <strong>1. 완결성으로 인한 압도적인 기억력 부스팅</strong>
+                        <p>짧은 이야기는 그 자리에서 이야기가 완결됩니다. 이는 학습자에게 즉각적인 성취감을 줄 뿐만 아니라, 이야기의 시작과 끝, 전체 맥락과 감정선을 하나의 덩어리로 묶어 기억에 저장하게 합니다. 이 완결성 효과가 단편적인 단어 암기보다 훨씬 높은 기억 유지율을 보장합니다.</p>
+                    </li>
+                    <li>
+                        <strong>2. 살아있는 한국어의 현장감</strong>
+                        <p>저희가 제공하는 스토리는 현대 한국어의 대화와 그 대화가 이루어지는 문맥을 생생하게 담고 있습니다. '딱딱한 교과서 문장'이 아닌, 실제 한국인들이 쓰는 말을 소리 내어 연습하며 현대적인 감각의 언어를 체득합니다.</p>
+                    </li>
+                    <li>
+                        <strong>3. 지구력 강화와 논리 파악</strong>
+                        <p>매일 완결된 짧은 이야기 하나를 꾸준히 연습하는 것은 긴 문장과 논리적 구조를 파악하는 <strong>"언어 지구력"</strong>을 길러줍니다. 이 습관이 쌓이면 자연스럽게 단편, 중편 소설 같은 고급 과정으로 진입할 수 있는 힘이 생깁니다.</p>
+                    </li>
+                    <li>
+                        <strong>4. 전 세계가 검증한 재미있는 소재</strong>
+                        <p>특히 이 교재의 스토리는 이미 세계 시장에 저작권 수출을 통해 재미와 작품성을 널리 인정받고 사랑받은 소재들입니다. 학습이 지루한 숙제가 아닌, 다음 이야기가 궁금해지는 <strong>"즐거운 정주행"</strong>이 됩니다.</p>
+                    </li>
+                </ul>
             </div>
         </section>
 
         <!-- 후기 섹션 -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">실제 학습자들의 변화</h2>
+                <h2 class="section-title">성공자들의 생생한 고백: 그들의 한국어는 이렇게 달라졌습니다!</h2>
+                
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
@@ -836,29 +767,26 @@
             </div>
         </section>
 
-        <!-- CTA 섹션 -->
-        <section class="content-section">
-            <div class="section-wrapper">
-                <div class="cta-content">
-                    <h2 class="section-title">
-                        30일 후, 당신의 한국어는<br>
-                        완전히 달라져 있을 것입니다
-                    </h2>
-                    <p class="section-subtitle">
-                        더 이상 '아는데 못하는' 답답함을 느끼지 마세요.<br>
-                        과학적으로 검증된 방법으로 진짜 말하기 실력을 만드세요.
-                    </p>
-                    <a href="#methods" class="cta-button-large">지금 바로 시작하기</a>
-                    <p class="cta-note">
-                        ✓ 30일 집중 프로그램 ✓ 과학적 방법론 ✓ 실전 중심 학습
-                    </p>
-                </div>
+        <!-- 마지막 질문 & CTA -->
+        <section class="cta-section">
+            <h2 class="cta-title">마지막 질문입니다.</h2>
+            <p class="cta-description">
+                당신의 한국어는 머릿속에만 잠자고 있는 <strong>'수동적인 지식'</strong>인가요?<br>
+                아니면 당신의 입을 통해 세상과 소통하는 <strong>'살아있는 언어'</strong>인가요?
+            </p>
+            <div style="margin: 40px 0;">
+                <p style="font-size: clamp(20px, 3vw, 32px); font-weight: 700; margin-bottom: 16px;">
+                    단 30일 안에 정체기를 깨고,<br>
+                    당신의 한국어를 머리 속에서 꺼내주세요!
+                </p>
             </div>
+            <a href="#form" class="cta-button">지금 바로 시작하기</a>
         </section>
 
         <!-- Google Form 섹션 -->
-        <section class="content-section">
+        <section class="content-section" id="form">
             <div class="section-wrapper">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 32px;">지금 바로 신청하세요</h2>
                 <!-- 반응형 Google Form 컨테이너 -->
                 <div class="form-container">
                     <div class="form-wrapper">
