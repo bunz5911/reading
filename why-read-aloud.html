@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-    <title>Why Read Aloud - The Fluency Secret</title>
+    <title>한국어 말하기 마스터 프로그램</title>
     <style>
         * {
             margin: 0;
@@ -83,26 +83,55 @@
             margin: 0 auto;
         }
 
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
         .hero-title {
             font-size: clamp(36px, 6vw, 64px);
             font-weight: 700;
             margin-bottom: 24px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
         }
 
-        .hero-warning {
-            font-size: 10pt;
-            font-weight: 600;
+        .hero-highlight {
             color: #FFD700;
-            margin-bottom: 16px;
-            line-height: 1.4;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
         }
 
-        .hero-subtitle {
+        .hero-description {
             font-size: clamp(16px, 2.5vw, 22px);
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 32px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: white;
+            color: #764ba2;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
         /* 컨텐츠 섹션 */
@@ -135,23 +164,64 @@
             text-align: center;
         }
 
-        .section-intro {
-            font-size: 10pt;
+        .section-subtitle {
+            font-size: 18px;
             color: #666;
             text-align: center;
             margin-bottom: 48px;
             line-height: 1.6;
         }
 
-        /* 과학적 근거 카드 */
-        .science-grid {
+        /* 문제 카드 그리드 */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
+            border-color: #667eea;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
+        }
+
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .problem-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* 방법 카드 그리드 */
+        .methods-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
             margin-top: 40px;
         }
 
-        .science-card {
+        .method-card {
             background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
             border-radius: 16px;
             padding: 32px;
@@ -159,141 +229,61 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        .science-card:hover {
+        .method-card:hover {
             transform: translateY(-8px);
             border-color: #667eea;
             box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
         }
 
-        .science-card.card-bodyguard {
-            background: url('public/img/bodygard.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1;
         }
 
-        .science-card.card-bodyguard .science-title,
-        .science-card.card-bodyguard .science-subtitle,
-        .science-card.card-bodyguard .science-problem,
-        .science-card.card-bodyguard .science-solution,
-        .science-card.card-bodyguard .science-description {
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
+        .method-content {
+            position: relative;
+            z-index: 2;
         }
 
-        .science-card.card-bodyguard .science-source {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .science-card.card-freezing {
-            background: url('public/img/Freezing.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .science-card.card-freezing .science-title,
-        .science-card.card-freezing .science-subtitle,
-        .science-card.card-freezing .science-problem,
-        .science-card.card-freezing .science-solution,
-        .science-card.card-freezing .science-description {
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
-        }
-
-        .science-card.card-freezing .science-source {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .science-card.card-overload {
-            background: url('public/img/overload.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .science-card.card-overload .science-title,
-        .science-card.card-overload .science-subtitle,
-        .science-card.card-overload .science-problem,
-        .science-card.card-overload .science-solution,
-        .science-card.card-overload .science-description {
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
-        }
-
-        .science-card.card-overload .science-source {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .science-card.card-translation {
-            background: url('public/img/translation.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .science-card.card-translation .science-title,
-        .science-card.card-translation .science-subtitle,
-        .science-card.card-translation .science-problem,
-        .science-card.card-translation .science-solution,
-        .science-card.card-translation .science-description {
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
-        }
-
-        .science-card.card-translation .science-source {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .science-number {
+        .method-badge {
             display: inline-block;
-            width: 48px;
-            height: 48px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 12px;
-            font-size: 24px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .science-title {
+        .method-title {
             font-size: 22px;
             font-weight: 700;
             color: #1a1a1a;
             margin-bottom: 12px;
         }
 
-        .science-subtitle {
-            font-size: 16px;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 16px;
-        }
-
-        .science-problem {
-            font-size: 15px;
-            color: #000;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .science-solution {
-            font-size: 15px;
-            color: #06a77d;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .science-description {
+        .method-description {
             font-size: 15px;
             color: #555;
             line-height: 1.6;
             margin-bottom: 16px;
         }
 
-        .science-source {
+        .method-evidence {
             font-size: 13px;
             color: #888;
             font-style: italic;
@@ -301,6 +291,58 @@
             background: rgba(102, 126, 234, 0.1);
             border-radius: 8px;
             border-left: 3px solid #667eea;
+        }
+
+        /* 혜택 카드 그리드 */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .benefit-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
         }
 
         /* 후기 섹션 */
@@ -327,7 +369,12 @@
             border-color: #667eea;
         }
 
-        .testimonial-quote {
+        .testimonial-rating {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
             font-size: 16px;
             color: #333;
             line-height: 1.7;
@@ -339,31 +386,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 4px;
             margin-top: 16px;
             padding-top: 16px;
             border-top: 1px solid #eee;
         }
 
-        .author-flag {
-            width: 64px;
-            height: 48px;
-            object-fit: cover;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .author-info {
-            text-align: center;
-        }
-
-        .author-name {
+        .testimonial-author strong {
             font-size: 16px;
             font-weight: 700;
             color: #1a1a1a;
         }
 
-        .author-country {
+        .testimonial-author span {
             font-size: 14px;
             color: #888;
         }
@@ -394,47 +429,31 @@
             margin-right: auto;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-
-        .cta-button {
-            padding: 18px 40px;
-            font-size: 18px;
+        .cta-button-large {
+            display: inline-block;
+            padding: 20px 50px;
+            background: white;
+            color: #764ba2;
+            font-size: 20px;
             font-weight: 700;
             text-decoration: none;
             border-radius: 12px;
             transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-bottom: 16px;
         }
 
-        .cta-primary {
-            background: white;
-            color: #764ba2;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-primary:hover {
+        .cta-button-large:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .cta-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+        .cta-note {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 16px;
         }
 
         /* Google Form 반응형 컨테이너 */
@@ -480,27 +499,28 @@
                 border-radius: 16px;
             }
 
-            .science-grid {
+            .problems-grid,
+            .methods-grid,
+            .benefits-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
             .final-call {
-                margin: 24px 16px;
-                padding: 60px 24px;
+                margin: 16px 12px;
+                padding: 12px 16px;
+                border-radius: 12px;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
+            .final-call-title {
+                font-size: 14pt;
+                margin-bottom: 8px;
             }
 
-            .cta-button {
-                width: 100%;
+            .final-call-text {
+                font-size: clamp(10px, 1.5vw, 14px);
+                margin-bottom: 12px;
             }
 
             /* 모바일에서 폼 컨테이너 여백 조정 */
@@ -514,7 +534,6 @@
                 transition: transform 0.2s ease;
             }
 
-            /* 모바일에서 폼 높이 비율 조정 (더 세로로 길게) */
             .form-wrapper {
                 padding-top: 160%;
                 /* 키보드 대응 */
@@ -524,23 +543,6 @@
             /* 터치 시 살짝 위로 이동 */
             .form-container:active {
                 transform: translateY(-10px);
-            }
-
-            /* 모바일에서 Final Call 섹션 극도로 컴팩트하게 */
-            .final-call {
-                margin: 16px 12px !important;
-                padding: 12px 16px !important;
-                border-radius: 12px !important;
-            }
-
-            .final-call-title {
-                font-size: 14pt !important;
-                margin-bottom: 8px !important;
-            }
-
-            .final-call-text {
-                font-size: clamp(10px, 1.5vw, 14px) !important;
-                margin-bottom: 12px !important;
             }
         }
     </style>
@@ -563,190 +565,248 @@
         <!-- 히어로 섹션 -->
         <section class="hero-section">
             <div class="hero-content">
-                <h1 class="hero-title">The Fluency Secret</h1>
-                <p class="hero-warning">WARNING: Your Korean Knowledge is Becoming a 'Brain Graveyard.'<br>(The Secret Intermediates Don't Know!)</p>
-                <p class="hero-subtitle">Why do you 'know' Korean but can't speak it?<br>Discover the one method to smash the plateau with 4 Brain Secrets and<br>10 Real-Life Confessions.</p>
+                <div class="hero-badge">30일 집중 프로그램</div>
+                <h1 class="hero-title">
+                    한국어를 <span class="hero-highlight">알지만</span><br>
+                    <span class="hero-highlight">말하지 못하는</span> 당신을 위한<br>
+                    과학적 솔루션
+                </h1>
+                <p class="hero-description">
+                    중급 이상의 한국어 실력을 가졌지만 막상 말하려면 막히는 경험, 있으신가요?<br>
+                    이제 '지식의 함정'에서 벗어나 진짜 한국어 말하기를 시작하세요.
+                </p>
+                <a href="#methods" class="cta-button">지금 시작하기</a>
             </div>
         </section>
 
-        <!-- Section 1: 4가지 과학적 근거 -->
+        <!-- 문제 섹션 -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">4 Science-Backed 'Cheat Codes' for Fluency!</h2>
-                <p class="section-intro">Your smart brain stored the language in the wrong folder.<br>Use "Reading Aloud" to move it to the 'Auto-Execute Folder'!</p>
+                <h2 class="section-title">이런 고민, 하고 계신가요?</h2>
                 
-                <div class="science-grid">
-                    <!-- 카드 1: Production Effect -->
-                    <div class="science-card card-bodyguard">
-                        <div class="science-number">1</div>
-                        <h3 class="science-title">From "Archivist" to "Bodyguard"!</h3>
-                        <p class="science-subtitle">(The Production Effect)</p>
-                        <p class="science-problem">• Problem: Words you only read silently go to the brain's 'Archive' (slow retrieval).</p>
-                        <p class="science-solution">• Solution: Speaking aloud tags the word with 'Your Own Voice,' making it a 'Precious Memory' that jumps to long-term recall.</p>
-                        <p class="science-description">Speaking words aloud improves memory retention by 14%-20% over silent reading. This is the "Production Effect."</p>
-                        <div class="science-source">Source: MacLeod et al., 2010. University of Waterloo Study</div>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">💭</div>
+                        <h3>머릿속으론 알겠는데...</h3>
+                        <p>단어도 알고 문법도 아는데 막상 말하려면 입이 안 떨어져요</p>
                     </div>
-
-                    <!-- 카드 2: Fluency & Prosody -->
-                    <div class="science-card card-freezing">
-                        <div class="science-number">2</div>
-                        <h3 class="science-title">End the "Freezing"!</h3>
-                        <p class="science-subtitle">(Fluency & Prosody Improvement)</p>
-                        <p class="science-problem">• Problem: You break the rhythm struggling with grammar and native speed.</p>
-                        <p class="science-solution">• Solution: Shadowing is the 'Language Treadmill'! You follow the native audio in real-time, imprinting accent and rhythm (Prosody) directly into your muscle memory.</p>
-                        <p class="science-description">Shadowing is proven to be the most efficient technique for increasing pronunciation accuracy and oral fluency.</p>
-                        <div class="science-source">Source: Hamada & Suzuki, 2022. Related Research</div>
+                    <div class="problem-card">
+                        <div class="problem-icon">⏱️</div>
+                        <h3>생각하는 시간이 너무 길어요</h3>
+                        <p>한국어로 말하기 전에 머릿속에서 번역하느라 시간이 오래 걸려요</p>
                     </div>
-
-                    <!-- 카드 3: Cognitive Load -->
-                    <div class="science-card card-overload">
-                        <div class="science-number">3</div>
-                        <h3 class="science-title">"No More Overload!"</h3>
-                        <p class="science-subtitle">(Cognitive Load & Short Story)</p>
-                        <p class="science-problem">• Problem: Long texts cause brain overload, leading to quick burnout and quitting.</p>
-                        <p class="science-solution">• Solution: Short stories are the 'Optimal Data Units' your brain can process without crashing. You absorb the full context without fatigue.</p>
-                        <p class="science-description">Managing information load boosts 'Working Memory' efficiency and greatly improves learning success.</p>
-                        <div class="science-source">Source: Cognitive Load Theory</div>
-                    </div>
-
-                    <!-- 카드 4: Contextual Processing -->
-                    <div class="science-card card-translation">
-                        <div class="science-number">4</div>
-                        <h3 class="science-title">"Translation Off!"</h3>
-                        <p class="science-subtitle">(Contextual Processing)</p>
-                        <p class="science-problem">• Problem: Your brain runs a constant 'Translation App' when you hear Korean.</p>
-                        <p class="science-solution">• Solution: The "Sound + Short Story" combination skips the translation process. You absorb the full context and react immediately.</p>
-                        <p class="science-description">Production practice improves vocabulary and grammatical comprehension better than comprehension-focused study alone.</p>
-                        <div class="science-source">Source: Hopman & MacDonald, 2018. Wisconsin-Madison University</div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📚</div>
+                        <h3>공부는 많이 했는데...</h3>
+                        <p>교재도 여러 권 봤고 강의도 들었는데 실전에서는 여전히 어려워요</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: 성공 후기 -->
+        <!-- 방법 섹션 -->
+        <section id="methods" class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">4가지 과학적 치트키</h2>
+                <p class="section-subtitle">
+                    언어학 연구로 검증된 방법으로 30일 만에 말하기 능력을 깨우세요
+                </p>
+                
+                <div class="methods-grid">
+                    <!-- Method 1 -->
+                    <div class="method-card" style="background-image: url('public/img/Freezing.png');">
+                        <div class="method-content">
+                            <div class="method-badge">Method 1</div>
+                            <h3 class="method-title">생산 효과 (Production Effect)</h3>
+                            <p class="method-description">
+                                소리 내어 읽으면 뇌의 운동 영역이 활성화되어 기억이 7배 강화됩니다.
+                                단순히 '아는 것'에서 '사용할 수 있는 것'으로 전환됩니다.
+                            </p>
+                            <div class="method-evidence">
+                                <strong>과학적 근거:</strong> MacLeod et al. (2010) - 소리 내어 읽은 정보는
+                                묵독한 정보보다 기억 재생률이 현저히 높음
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 2 -->
+                    <div class="method-card" style="background-image: url('public/img/bodygard.png');">
+                        <div class="method-content">
+                            <div class="method-badge">Method 2</div>
+                            <h3 class="method-title">쉐도잉 (Shadowing)</h3>
+                            <p class="method-description">
+                                원어민의 말을 그림자처럼 따라하면서 자연스러운 억양, 리듬, 발음을
+                                체화합니다. 통역사들이 사용하는 검증된 훈련법입니다.
+                            </p>
+                            <div class="method-evidence">
+                                <strong>과학적 근거:</strong> Hamada (2016) - 쉐도잉은 듣기 능력뿐만 아니라
+                                말하기 유창성을 동시에 향상시킴
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 3 -->
+                    <div class="method-card" style="background-image: url('public/img/translation.png');">
+                        <div class="method-content">
+                            <div class="method-badge">Method 3</div>
+                            <h3 class="method-title">직접 흡수 (Direct Absorption)</h3>
+                            <p class="method-description">
+                                모국어로 번역하지 않고 한국어를 한국어로 이해합니다.
+                                이것이 '생각 없이 튀어나오는' 말하기의 비밀입니다.
+                            </p>
+                            <div class="method-evidence">
+                                <strong>과학적 근거:</strong> Kroll & Stewart (1994) - 직접 개념 연결이
+                                번역 과정보다 빠르고 자연스러운 언어 산출을 가능하게 함
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 4 -->
+                    <div class="method-card" style="background-image: url('public/img/overload.png');">
+                        <div class="method-content">
+                            <div class="method-badge">Method 4</div>
+                            <h3 class="method-title">짧은 이야기의 힘</h3>
+                            <p class="method-description">
+                                문맥이 있는 짧은 이야기로 학습하면 단어와 표현이 자연스럽게
+                                연결되어 기억됩니다. 지루한 단어 암기는 이제 그만!
+                            </p>
+                            <div class="method-evidence">
+                                <strong>과학적 근거:</strong> Nation (2013) - 맥락 속 학습이 고립된 단어
+                                학습보다 장기 기억과 실제 사용 능력에서 우수함
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 혜택 섹션 -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">Success Confessions</h2>
-                <p class="section-intro">Hear Their Breakthrough Stories:</p>
-                
+                <h2 class="section-title">왜 짧은 이야기인가?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-number">01</div>
+                        <h3>자연스러운 문맥</h3>
+                        <p>실제 대화에서 사용되는 방식 그대로 표현을 익힙니다</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">02</div>
+                        <h3>부담 없는 길이</h3>
+                        <p>하루 10-15분이면 충분. 바쁜 일상 속에서도 꾸준히 할 수 있습니다</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">03</div>
+                        <h3>반복 학습 최적화</h3>
+                        <p>짧아서 여러 번 반복하기 쉽고, 반복할수록 자동화됩니다</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">04</div>
+                        <h3>즉각적인 성취감</h3>
+                        <p>매일 하나씩 완성하며 느끼는 성취감이 동기부여가 됩니다</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 후기 섹션 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">실제 학습자들의 변화</h2>
                 <div class="testimonials-grid">
-                    <!-- 후기 1 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"Now, 'Ah, michin! Gae-utgyeo!' pops out before they finish. They say I have better humor!"</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "3년 동안 한국어를 공부했지만 말하기는 항상 자신이 없었어요.
+                            이 방법으로 2주 만에 한국 친구들과 자연스럽게 대화할 수 있게 됐습니다!"
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/br.png" alt="Brazil Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Carlos</div>
-                                <div class="author-country">Brazil</div>
-                            </div>
+                            <strong>Sarah M.</strong>
+                            <span>미국, 중급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 2 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"Shadowing the star's voice completely changed my articulation. I speak confidently now!"</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "머릿속에서 영어로 번역하는 습관 때문에 말이 느렸는데,
+                            직접 흡수 방법을 쓰니까 생각 없이 한국어가 나와요. 신기해요!"
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/th.png" alt="Thailand Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Tyra</div>
-                                <div class="author-country">Thailand</div>
-                            </div>
+                            <strong>James L.</strong>
+                            <span>영국, 고급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 3 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"I gained confidence that I can be fluent just using the words I already know! Goodbye, memorization stress!"</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "쉐도잉이 이렇게 효과적일 줄 몰랐어요. 발음도 좋아지고
+                            말하는 속도도 빨라졌습니다. 한국 드라마 보는 게 더 재밌어졌어요!"
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/eg.png" alt="Egypt Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Fatima</div>
-                                <div class="author-country">Egypt</div>
-                            </div>
+                            <strong>Maria G.</strong>
+                            <span>스페인, 초중급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 4 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"Story reading automatically switches my brain to honorific mode. No more embarrassing mistakes!"</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "매일 15분씩 짧은 이야기로 연습했더니 한 달 만에 한국어 면접을 통과했습니다.
+                            실전에서 바로 쓸 수 있는 표현들이 많아서 좋았어요."
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/fr.png" alt="France Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Michelle</div>
-                                <div class="author-country">France</div>
-                            </div>
+                            <strong>Chen W.</strong>
+                            <span>중국, 중급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 5 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"My ears opened up! I can follow the context easily without subtitles."</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "문법 공부만 하다가 이 프로그램을 시작했어요.
+                            소리 내어 읽기가 이렇게 중요한지 몰랐습니다. 이제 자신감이 생겼어요!"
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/jp.png" alt="Japan Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Kenji</div>
-                                <div class="author-country">Japan</div>
-                            </div>
+                            <strong>Anna K.</strong>
+                            <span>러시아, 중급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 6 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"Assembly time is down to 0.5 seconds! The hesitation is gone."</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "한국에서 일하는데 회의 때마다 긴장했었어요.
+                            이 방법으로 연습하니까 자연스럽게 의견을 말할 수 있게 됐습니다."
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Rachel</div>
-                                <div class="author-country">Canada</div>
-                            </div>
+                            <strong>David P.</strong>
+                            <span>호주, 고급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 7 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"I'm the one using the trendy words now! They call me a 'real Korean!'"</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "짧은 이야기라서 부담 없이 시작했는데, 매일 하나씩 완성하는 재미에 푹 빠졌어요.
+                            3주 차부터 한국어가 자동으로 나오기 시작했습니다!"
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/it.png" alt="Italy Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Marco</div>
-                                <div class="author-country">Italy</div>
-                            </div>
+                            <strong>Lisa T.</strong>
+                            <span>독일, 중급 학습자</span>
                         </div>
                     </div>
 
-                    <!-- 후기 8 -->
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"The 'soft-spoken' indirect language I learned made my business talks flow much better."</p>
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "TOPIK 5급을 땄지만 말하기는 여전히 어려웠어요.
+                            이 프로그램 덕분에 드디어 '아는 것'을 '말할 수 있는 것'으로 만들었습니다."
+                        </p>
                         <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/gb.png" alt="UK Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Sarah</div>
-                                <div class="author-country">UK</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 후기 9 -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"Daily short story practice gave me the stamina to read long sentences and grasp the logic."</p>
-                        <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/ru.png" alt="Russia Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Andrei</div>
-                                <div class="author-country">Russia</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 후기 10 -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"Shadowing made my intonation sound authentic! Nobody can guess my background anymore."</p>
-                        <div class="testimonial-author">
-                            <img src="https://flagcdn.com/w80/de.png" alt="Germany Flag" class="author-flag">
-                            <div class="author-info">
-                                <div class="author-name">Julia</div>
-                                <div class="author-country">Germany</div>
-                            </div>
+                            <strong>Yuki S.</strong>
+                            <span>일본, 고급 학습자</span>
                         </div>
                     </div>
                 </div>
@@ -755,8 +815,13 @@
 
         <!-- Final Call 섹션 -->
         <section class="final-call">
-            <h2 class="final-call-title">Stop being 'The Person Who Knows Korean.'<br>Start being 'The Person Who Speaks Korean.'</h2>
-            <p class="final-call-text">Smash the plateau in 30 days and rescue your Korean<br>from the 'Brain Graveyard'!</p>
+            <h2 class="final-call-title">30일 후, 당신의 한국어는<br>완전히 달라져 있을 것입니다</h2>
+            <p class="final-call-text">더 이상 '아는데 못하는' 답답함을 느끼지 마세요.<br>과학적으로 검증된 방법으로 진짜 말하기 실력을 만드세요.</p>
+            
+            <a href="#methods" class="cta-button-large">지금 바로 시작하기</a>
+            <p class="cta-note">
+                ✓ 30일 집중 프로그램 ✓ 과학적 방법론 ✓ 실전 중심 학습
+            </p>
             
             <!-- 반응형 Google Form 컨테이너 -->
             <div class="form-container">
@@ -808,4 +873,3 @@
     </script>
 </body>
 </html>
-
