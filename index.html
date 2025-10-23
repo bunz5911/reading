@@ -542,19 +542,6 @@
             height: 100%;
             border: none;
         }
-
-        /* 모바일에서 폼 컨테이너 조정 */
-        @media (max-width: 768px) {
-            .form-container {
-                margin: 32px 16px 0;
-                border-radius: 8px;
-            }
-
-            /* 모바일에서 폼 높이 비율 조정 */
-            .form-wrapper {
-                padding-top: 160%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -755,7 +742,7 @@
             <!-- 반응형 Google Form 컨테이너 -->
             <div class="form-container">
                 <div class="form-wrapper">
-                    <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" style="position: relative; z-index: 10;">로드 중…</iframe>
+                    <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">로드 중…</iframe>
                 </div>
             </div>
         </div>
