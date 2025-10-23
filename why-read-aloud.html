@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
     <title>Why Read Aloud - The Fluency Secret</title>
     <style>
         * {
@@ -509,6 +509,11 @@
                 border-radius: 8px;
                 /* 키보드 올라올 때 자연스러운 스크롤 */
                 scroll-margin-top: 20px;
+                /* 화면 밀림 방지 */
+                position: relative;
+                z-index: 100;
+                /* 부드러운 전환 */
+                transition: all 0.3s ease;
             }
 
             /* 모바일에서 폼 높이 비율 조정 (더 세로로 길게) */
@@ -516,6 +521,15 @@
                 padding-top: 160%;
                 /* 키보드 대응 */
                 min-height: 400px;
+                /* 안정적인 위치 */
+                position: relative;
+            }
+
+            /* 키보드가 올라올 때 추가 안정화 */
+            body.keyboard-open {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
             }
         }
     </style>
@@ -763,6 +777,59 @@
 
         // 초기 실행
         handleScrollAnimation();
+
+        // 모바일 키보드 대응 - 화면 밀림 방지
+        let initialViewportHeight = window.innerHeight;
+        let isKeyboardOpen = false;
+
+        function handleViewportChange() {
+            const currentHeight = window.innerHeight;
+            const heightDifference = initialViewportHeight - currentHeight;
+            
+            // 키보드가 열렸는지 판단 (높이가 150px 이상 줄어들면)
+            if (heightDifference > 150) {
+                if (!isKeyboardOpen) {
+                    isKeyboardOpen = true;
+                    // 키보드가 열렸을 때 스크롤을 폼 위치로 이동
+                    const formContainer = document.querySelector('.form-container');
+                    if (formContainer) {
+                        setTimeout(() => {
+                            formContainer.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'center' 
+                            });
+                        }, 100);
+                    }
+                }
+            } else {
+                isKeyboardOpen = false;
+            }
+        }
+
+        // 뷰포트 변경 감지
+        window.addEventListener('resize', handleViewportChange);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                initialViewportHeight = window.innerHeight;
+                handleViewportChange();
+            }, 500);
+        });
+
+        // 폼 컨테이너에 터치 이벤트 추가
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.addEventListener('touchstart', function() {
+                    // 터치 시작 시 부드러운 스크롤
+                    setTimeout(() => {
+                        this.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                    }, 200);
+                });
+            }
+        });
     </script>
 </body>
 </html>
