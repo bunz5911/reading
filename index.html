@@ -522,6 +522,32 @@
             .form-container:active {
                 transform: translateY(-10px);
             }
+
+            /* 모바일에서 Footer 섹션 더욱 컴팩트하게 */
+            section[style*="padding: 30px"] {
+                padding: 20px 16px !important;
+            }
+
+            section[style*="padding: 30px"] h2 {
+                font-size: clamp(14px, 2vw, 20px) !important;
+                margin-bottom: 8px !important;
+            }
+
+            section[style*="padding: 30px"] p {
+                font-size: clamp(12px, 1.8vw, 16px) !important;
+                margin-bottom: 16px !important;
+            }
+
+            section[style*="padding: 30px"] .cta-button {
+                font-size: 14px !important;
+                padding: 12px 32px !important;
+                margin-bottom: 12px !important;
+            }
+
+            section[style*="padding: 30px"] div[style*="margin-top: 20px"] {
+                margin-top: 12px !important;
+                padding-top: 12px !important;
+            }
         }
 
         /* Google Form 반응형 컨테이너 */
@@ -757,19 +783,19 @@
     </section>
 
     <!-- Footer Download Section -->
-    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 24px; text-align: center;">
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 24px; text-align: center;">
         <div style="max-width: 600px; margin: 0 auto;">
-            <h2 style="color: white; font-size: clamp(18px, 3vw, 38px); font-weight: 600; margin-bottom: 16px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+            <h2 style="color: white; font-size: clamp(16px, 2.5vw, 28px); font-weight: 600; margin-bottom: 12px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
                 지금 바로 시작하세요
             </h2>
-            <p style="color: rgba(255, 255, 255, 0.95); font-size: clamp(16px, 2.5vw, 24px); line-height: 1.6; margin-bottom: 32px;">
+            <p style="color: rgba(255, 255, 255, 0.95); font-size: clamp(14px, 2vw, 18px); line-height: 1.4; margin-bottom: 20px;">
                 한국어 유창성으로 가는 여정을 오늘부터 시작하세요
             </p>
-            <a href="why-read-aloud.html" target="_blank" class="cta-button" style="background: white; color: #764ba2; font-size: 20px; padding: 20px 60px; display: inline-block; margin-bottom: 24px;">
+            <a href="why-read-aloud.html" target="_blank" class="cta-button" style="background: white; color: #764ba2; font-size: 16px; padding: 14px 40px; display: inline-block; margin-bottom: 16px;">
                 why Read Aloud
             </a>
-            <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-                <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px;">
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                <p style="color: rgba(255, 255, 255, 0.8); font-size: 12px;">
                     © 2025 Read Aloud Korean. All rights reserved.
                 </p>
             </div>
