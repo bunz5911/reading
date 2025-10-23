@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+page 구성은 반드시 html, css, javascript로만 구성한다.
