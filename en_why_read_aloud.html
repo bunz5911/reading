@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
+    <title>Korean Speaking Master Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Fixed Header Navigation */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 16px 24px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding-bottom: 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1.3;
+        }
+
+        .hero-highlight {
+            color: #FFD700;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2.5vw, 20px);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        /* Content Section */
+        .content-section {
+            background: white;
+            margin: 40px 24px;
+            border-radius: 24px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: #555;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .section-content {
+            font-size: 17px;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .section-content strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
+            border-left: 4px solid #667eea;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        /* Method Cards */
+        .method-section {
+            margin: 48px 0;
+        }
+
+        .method-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 28px;
+            border-radius: 12px 12px 0 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .method-body {
+            background: #f9fafb;
+            padding: 32px 28px;
+            border-radius: 0 0 12px 12px;
+            border: 2px solid #e5e7eb;
+            border-top: none;
+        }
+
+        .method-problem {
+            margin-bottom: 24px;
+        }
+
+        .method-problem h4 {
+            color: #dc2626;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .method-solution h4 {
+            color: #059669;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .method-evidence {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 3px solid #667eea;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 15px;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            list-style: none;
+            margin: 32px 0;
+        }
+
+        .benefits-list li {
+            background: white;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+        }
+
+        .benefits-list li strong {
+            display: block;
+            font-size: 20px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .testimonial-rating {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .testimonial-author strong {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .testimonial-author span {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 40px 24px;
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1.3;
+        }
+
+        .cta-description {
+            font-size: clamp(16px, 2vw, 22px);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: white;
+            color: #764ba2;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Google Form Responsive Container */
+        .form-container {
+            max-width: 640px;
+            margin: 32px auto 0;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .form-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 140%;
+            overflow: hidden;
+        }
+
+        .form-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 48px 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .fixed-header {
+                padding: 12px 16px;
+            }
+
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .content-section {
+                margin: 24px 16px;
+                padding: 40px 24px;
+                border-radius: 16px;
+            }
+
+            .method-header {
+                font-size: 20px;
+                padding: 16px 20px;
+            }
+
+            .method-body {
+                padding: 24px 20px;
+            }
+
+            .cta-section {
+                margin: 24px 16px;
+                padding: 40px 24px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-container {
+                margin: 32px 16px 0;
+                border-radius: 8px;
+                scroll-margin-top: 20px;
+                scroll-margin-bottom: 20px;
+                transition: transform 0.2s ease;
+            }
+
+            .form-wrapper {
+                padding-top: 160%;
+                min-height: 400px;
+            }
+
+            .form-container:active {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="fixed-header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">30-Day Intensive Program</div>
+                <h1 class="hero-title">
+                    Korean Trapped in Your Head,<br>
+                    Why Can You <span class="hero-highlight">'Know It'</span> But Not Speak It?
+                </h1>
+                <p class="hero-description">
+                    The words you studied hard just disappear when you meet a native speaker.<br>
+                    Let's find the way to bring your Korean out of your head and start speaking.
+                </p>
+            </div>
+        </section>
+
+        <!-- Problem Recognition Section -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">Have You Ever Felt Like This?</h2>
+                
+                <div class="section-content">
+                    <p>The words you studied hard just disappear when you meet a native speaker. You know the grammar, but when you try to speak, your mind goes blank and freezes. Because you always translate Korean to your native language in your head, you can't keep up with the conversation speed and miss your chance to speak.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Many learners are stuck in the "Language Knowledge Trap."</strong></p>
+                    <p>Your precious Korean skills are not being used in real life. They're sleeping like treasures piled up in a warehouse, trapped somewhere in <strong>"your brain's storage space."</strong></p>
+                </div>
+
+                <div class="section-content">
+                    <p><strong>The way to bring your Korean out of your head.</strong> From now on, we'll break this problem and show you 4 scientific ways to level up to <strong>"Speaking Korean."</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Cheat Keys Introduction -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">Try These 4 Scientific "Cheat Keys" Now!</h2>
+                
+                <div class="highlight-box">
+                    <p><strong>The core idea is simple.</strong></p>
+                    <p>Move your language knowledge from the <strong>"wrong folder"</strong> in your brain to the <strong>Auto-Execute Folder</strong> where you can actually use it.</p>
+                    <p>Through <strong>"Reading Aloud"</strong>!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 1 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        1. Turn Knowledge in Your Head into 'Sound' and Put It in Your Body!
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(Production Effect: Up to 20% Better Memory)</div>
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ The Problem:</h4>
+                            <p>Words or sentences you learned only with your eyes are locked in your brain's <strong>"Archive."</strong> To speak them, you need to go through a long process: <strong>'search, check, and output.'</strong> This process makes your speaking very slow.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ The Solution:</h4>
+                            <p>Language should be changed from "knowledge in your head" to <strong>"sound"</strong> for use and input. When you say a word out loud, your brain tags it with <strong>"your voice"</strong> and saves it as a <strong>"Precious Memory,"</strong> not just knowledge. This memory jumps to long-term memory and becomes <strong>"automated language ability"</strong> that you can use right away when you need it.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 Scientific Evidence:</strong> Speaking out loud (Production) improves memory retention by up to 20% compared to silent reading. (MacLeod et al., 2010. University of Waterloo Study)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 2 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        2. Don't Hesitate!
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(Build Language Muscle Through Shadowing)</div>
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ The Problem:</h4>
+                            <p>You often hesitate or break your rhythm while speaking because you worry about grammar mistakes or native speaker speed. This habit is the biggest enemy of natural speaking.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ The Solution:</h4>
+                            <p><strong>"Reading Aloud, or Shadowing"</strong> is like using a <strong>"language vending machine"</strong> where you follow native audio in real-time. This training puts Korean rhythm and intonation directly into your brain's muscle memory, and maximizes <strong>"unconscious language processing"</strong> where words come out before you think.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 Scientific Evidence:</strong> Shadowing is proven to be the most effective technique for improving pronunciation accuracy and speaking fluency. (Hamada & Suzuki, 2022. Related Research)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 3 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        3. Don't Create Sentences in Your Native Language!
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(How to Absorb Real Korean Through Sound)</div>
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ The Problem:</h4>
+                            <p>Every time you hear Korean, your brain keeps translating Korean to your native language. When you speak, you create sentences in your native language first and then translate them to Korean. This makes you speak slowly and creates awkward expressions.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ The Solution:</h4>
+                            <p>Read and speak what real Koreans say. <strong>"Audio + Short Story"</strong> combination lets you skip this translation process completely. You absorb sentences in their full context and accept Korean as Korean itself, so you can respond right away.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 Scientific Evidence:</strong> Reading practice focused on production practice, not just comprehension-focused study, improves vocabulary and grammar understanding more effectively. (Cognitive Load Theory)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method 4 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <div class="method-section">
+                    <div class="method-header">
+                        4. Master All Details with Short, Deep Stories!
+                    </div>
+                    <div class="method-body">
+                        <div class="method-problem">
+                            <h4>❌ The Problem:</h4>
+                            <p>Long and complex texts can be scary (Cognitive Load). This reduces your <strong>'Working Memory'</strong> efficiency, increases fatigue, and makes you want to give up.</p>
+                        </div>
+                        
+                        <div class="method-solution">
+                            <h4>✅ The Solution:</h4>
+                            <p><strong>Short stories</strong> are the <strong>"perfect data size"</strong> that your brain can process without getting tired. Learning with short stories lets you understand the story perfectly and master every small detail of sentence structure and vocabulary use. The short length helps you absorb the whole context without missing anything.</p>
+                        </div>
+
+                        <div class="method-evidence">
+                            <strong>📚 Scientific Evidence:</strong> Managing information load improves working memory efficiency and greatly increases learning success. (Hopman & MacDonald, 2018. Wisconsin-Madison University)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Short Stories -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">Why Do 'Short Stories' Boost Your Fluency So Much?</h2>
+                
+                <p class="section-content">We strongly recommend short story learning because it's the most efficient and fun tool for intermediate learners to reach fluency.</p>
+
+                <ul class="benefits-list">
+                    <li>
+                        <strong>1. Amazing Memory Boost from Completion</strong>
+                        <p>Short stories finish right there. This gives learners immediate satisfaction and helps them remember the beginning, end, whole context, and emotions as one complete piece. This completion effect guarantees much better memory retention than learning separate words.</p>
+                    </li>
+                    <li>
+                        <strong>2. Real-Life Feel of Living Korean</strong>
+                        <p>Our stories contain vivid modern Korean conversations and their contexts. Practice real Korean that actual Koreans use, not stiff textbook sentences, and learn modern language sense.</p>
+                    </li>
+                    <li>
+                        <strong>3. Build Stamina and Logic Understanding</strong>
+                        <p>Practicing one complete short story every day builds <strong>"language stamina"</strong> to understand long sentences and logical structures. When this habit builds up, you naturally gain the power to move to advanced levels like short novels or longer works.</p>
+                    </li>
+                    <li>
+                        <strong>4. Fun Content Proven Worldwide</strong>
+                        <p>Our stories are materials already loved worldwide through copyright exports, proven for their fun and quality. Learning becomes not a boring homework but an <strong>"enjoyable binge-watch"</strong> where you're curious about the next story.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">Real Stories from Success: How Their Korean Changed!</h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I studied Korean for 3 years but never felt confident speaking.
+                            With this method, I could talk naturally with Korean friends in just 2 weeks!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Sarah M.</strong>
+                            <span>USA, Intermediate Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I used to speak slowly because I always translated to English in my head.
+                            Using direct absorption, Korean just comes out without thinking. Amazing!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>James L.</strong>
+                            <span>UK, Advanced Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I didn't know shadowing was this effective. My pronunciation got better
+                            and I speak faster. Watching Korean dramas is more fun now!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Maria G.</strong>
+                            <span>Spain, Basic-Intermediate Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I practiced 15 minutes daily with short stories and passed a Korean job interview in one month.
+                            So many expressions I could use in real situations!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Chen W.</strong>
+                            <span>China, Intermediate Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I only studied grammar before starting this program.
+                            I didn't know reading aloud was this important. Now I have confidence!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Anna K.</strong>
+                            <span>Russia, Intermediate Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I work in Korea and used to get nervous at every meeting.
+                            After practicing this way, I can now share my opinions naturally."
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>David P.</strong>
+                            <span>Australia, Advanced Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "The stories were short, so I started without pressure. I got hooked on the fun of completing one each day.
+                            From week 3, Korean started coming out automatically!"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Lisa T.</strong>
+                            <span>Germany, Intermediate Learner</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "I passed TOPIK level 5 but speaking was still hard.
+                            Thanks to this program, I finally turned 'what I know' into 'what I can speak.'"
+                        </p>
+                        <div class="testimonial-author">
+                            <strong>Yuki S.</strong>
+                            <span>Japan, Advanced Learner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Question & CTA -->
+        <section class="cta-section">
+            <h2 class="cta-title">One Final Question.</h2>
+            <p class="cta-description">
+                Is your Korean just <strong>'passive knowledge'</strong> sleeping in your head?<br>
+                Or is it a <strong>'living language'</strong> communicating with the world through your mouth?
+            </p>
+            <div style="margin: 40px 0;">
+                <p style="font-size: clamp(20px, 3vw, 32px); font-weight: 700; margin-bottom: 16px;">
+                    Break Through Your Plateau in Just 30 Days<br>
+                    and Bring Your Korean Out of Your Head!
+                </p>
+            </div>
+            <a href="https://chipper-bunny-bab9f4.netlify.app/" class="cta-button">Interactive Book</a>
+        </section>
+
+        <!-- Google Form Section -->
+        <section class="content-section" id="form">
+            <div class="section-wrapper">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 32px;">Sign Up Now</h2>
+                <!-- Responsive Google Form Container -->
+                <div class="form-container">
+                    <div class="form-wrapper">
+                        <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">Loading…</iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Korean Speaking Master. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        function handleScrollAnimation() {
+            const sections = document.querySelectorAll('.content-section');
+            const triggerPoint = window.innerHeight * 0.8;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerPoint) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Run on page load and scroll
+        window.addEventListener('load', handleScrollAnimation);
+        window.addEventListener('scroll', handleScrollAnimation);
+
+        // Initial run
+        handleScrollAnimation();
+
+        // Mobile keyboard handling - activate iframe scroll only
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.addEventListener('touchstart', function(e) {
+                    // Smooth scroll when iframe area is touched
+                    setTimeout(() => {
+                        this.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start',
+                            inline: 'nearest'
+                        });
+                    }, 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

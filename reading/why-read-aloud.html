@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Read Aloud - The Fluency Secret</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 고정 헤더 네비게이션 */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 16px 24px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* 메인 컨텐츠 */
+        .main-content {
+            margin-top: 80px;
+            padding-bottom: 60px;
+        }
+
+        /* 히어로 섹션 */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-warning {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2.5vw, 22px);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        /* 컨텐츠 섹션 */
+        .content-section {
+            background: white;
+            margin: 40px 24px;
+            border-radius: 24px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 10pt;
+            color: #666;
+            text-align: center;
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        /* 과학적 근거 카드 */
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .science-card {
+            background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 100%);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .science-card:hover {
+            transform: translateY(-8px);
+            border-color: #667eea;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
+        }
+
+        .science-card.card-bodyguard {
+            background: url('public/img/bodygard.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .science-card.card-bodyguard .science-title,
+        .science-card.card-bodyguard .science-subtitle,
+        .science-card.card-bodyguard .science-problem,
+        .science-card.card-bodyguard .science-solution,
+        .science-card.card-bodyguard .science-description {
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        .science-card.card-bodyguard .science-source {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .science-card.card-freezing {
+            background: url('public/img/Freezing.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .science-card.card-freezing .science-title,
+        .science-card.card-freezing .science-subtitle,
+        .science-card.card-freezing .science-problem,
+        .science-card.card-freezing .science-solution,
+        .science-card.card-freezing .science-description {
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        .science-card.card-freezing .science-source {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .science-card.card-overload {
+            background: url('public/img/overload.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .science-card.card-overload .science-title,
+        .science-card.card-overload .science-subtitle,
+        .science-card.card-overload .science-problem,
+        .science-card.card-overload .science-solution,
+        .science-card.card-overload .science-description {
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        .science-card.card-overload .science-source {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .science-card.card-translation {
+            background: url('public/img/translation.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .science-card.card-translation .science-title,
+        .science-card.card-translation .science-subtitle,
+        .science-card.card-translation .science-problem,
+        .science-card.card-translation .science-solution,
+        .science-card.card-translation .science-description {
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        .science-card.card-translation .science-source {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .science-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .science-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .science-subtitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 16px;
+        }
+
+        .science-problem {
+            font-size: 15px;
+            color: #000;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .science-solution {
+            font-size: 15px;
+            color: #06a77d;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .science-description {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .science-source {
+            font-size: 13px;
+            color: #888;
+            font-style: italic;
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        /* 후기 섹션 */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .author-flag {
+            width: 64px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .author-info {
+            text-align: center;
+        }
+
+        .author-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .author-country {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Final Call 섹션 */
+        .final-call {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 40px 24px;
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .final-call-title {
+            font-size: 20pt;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .final-call-text {
+            font-size: clamp(16px, 2.5vw, 20px);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .cta-button {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #764ba2;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 768px) {
+            .fixed-header {
+                padding: 12px 16px;
+            }
+
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .content-section {
+                margin: 24px 16px;
+                padding: 40px 24px;
+                border-radius: 16px;
+            }
+
+            .science-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-call {
+                margin: 24px 16px;
+                padding: 60px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 고정 헤더 -->
+    <header class="fixed-header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <!-- 히어로 섹션 -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">The Fluency Secret</h1>
+                <p class="hero-warning">WARNING: Your Korean Knowledge is Becoming a 'Brain Graveyard.'<br>(The Secret Intermediates Don't Know!)</p>
+                <p class="hero-subtitle">Why do you 'know' Korean but can't speak it?<br>Discover the one method to smash the plateau with 4 Brain Secrets and<br>10 Real-Life Confessions.</p>
+            </div>
+        </section>
+
+        <!-- Section 1: 4가지 과학적 근거 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">4 Science-Backed 'Cheat Codes' for Fluency!</h2>
+                <p class="section-intro">Your smart brain stored the language in the wrong folder.<br>Use "Reading Aloud" to move it to the 'Auto-Execute Folder'!</p>
+                
+                <div class="science-grid">
+                    <!-- 카드 1: Production Effect -->
+                    <div class="science-card card-bodyguard">
+                        <div class="science-number">1</div>
+                        <h3 class="science-title">From "Archivist" to "Bodyguard"!</h3>
+                        <p class="science-subtitle">(The Production Effect)</p>
+                        <p class="science-problem">• Problem: Words you only read silently go to the brain's 'Archive' (slow retrieval).</p>
+                        <p class="science-solution">• Solution: Speaking aloud tags the word with 'Your Own Voice,' making it a 'Precious Memory' that jumps to long-term recall.</p>
+                        <p class="science-description">Speaking words aloud improves memory retention by 14%-20% over silent reading. This is the "Production Effect."</p>
+                        <div class="science-source">Source: MacLeod et al., 2010. University of Waterloo Study</div>
+                    </div>
+
+                    <!-- 카드 2: Fluency & Prosody -->
+                    <div class="science-card card-freezing">
+                        <div class="science-number">2</div>
+                        <h3 class="science-title">End the "Freezing"!</h3>
+                        <p class="science-subtitle">(Fluency & Prosody Improvement)</p>
+                        <p class="science-problem">• Problem: You break the rhythm struggling with grammar and native speed.</p>
+                        <p class="science-solution">• Solution: Shadowing is the 'Language Treadmill'! You follow the native audio in real-time, imprinting accent and rhythm (Prosody) directly into your muscle memory.</p>
+                        <p class="science-description">Shadowing is proven to be the most efficient technique for increasing pronunciation accuracy and oral fluency.</p>
+                        <div class="science-source">Source: Hamada & Suzuki, 2022. Related Research</div>
+                    </div>
+
+                    <!-- 카드 3: Cognitive Load -->
+                    <div class="science-card card-overload">
+                        <div class="science-number">3</div>
+                        <h3 class="science-title">"No More Overload!"</h3>
+                        <p class="science-subtitle">(Cognitive Load & Short Story)</p>
+                        <p class="science-problem">• Problem: Long texts cause brain overload, leading to quick burnout and quitting.</p>
+                        <p class="science-solution">• Solution: Short stories are the 'Optimal Data Units' your brain can process without crashing. You absorb the full context without fatigue.</p>
+                        <p class="science-description">Managing information load boosts 'Working Memory' efficiency and greatly improves learning success.</p>
+                        <div class="science-source">Source: Cognitive Load Theory</div>
+                    </div>
+
+                    <!-- 카드 4: Contextual Processing -->
+                    <div class="science-card card-translation">
+                        <div class="science-number">4</div>
+                        <h3 class="science-title">"Translation Off!"</h3>
+                        <p class="science-subtitle">(Contextual Processing)</p>
+                        <p class="science-problem">• Problem: Your brain runs a constant 'Translation App' when you hear Korean.</p>
+                        <p class="science-solution">• Solution: The "Sound + Short Story" combination skips the translation process. You absorb the full context and react immediately.</p>
+                        <p class="science-description">Production practice improves vocabulary and grammatical comprehension better than comprehension-focused study alone.</p>
+                        <div class="science-source">Source: Hopman & MacDonald, 2018. Wisconsin-Madison University</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 성공 후기 -->
+        <section class="content-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">Success Confessions</h2>
+                <p class="section-intro">Hear Their Breakthrough Stories:</p>
+                
+                <div class="testimonials-grid">
+                    <!-- 후기 1 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Now, 'Ah, michin! Gae-utgyeo!' pops out before they finish. They say I have better humor!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/br.png" alt="Brazil Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Carlos</div>
+                                <div class="author-country">Brazil</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 2 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Shadowing the star's voice completely changed my articulation. I speak confidently now!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/th.png" alt="Thailand Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Tyra</div>
+                                <div class="author-country">Thailand</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 3 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"I gained confidence that I can be fluent just using the words I already know! Goodbye, memorization stress!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/eg.png" alt="Egypt Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Fatima</div>
+                                <div class="author-country">Egypt</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 4 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Story reading automatically switches my brain to honorific mode. No more embarrassing mistakes!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/fr.png" alt="France Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Michelle</div>
+                                <div class="author-country">France</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 5 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"My ears opened up! I can follow the context easily without subtitles."</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/jp.png" alt="Japan Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Kenji</div>
+                                <div class="author-country">Japan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 6 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Assembly time is down to 0.5 seconds! The hesitation is gone."</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Rachel</div>
+                                <div class="author-country">Canada</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 7 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"I'm the one using the trendy words now! They call me a 'real Korean!'"</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/it.png" alt="Italy Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Marco</div>
+                                <div class="author-country">Italy</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 8 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"The 'soft-spoken' indirect language I learned made my business talks flow much better."</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/gb.png" alt="UK Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Sarah</div>
+                                <div class="author-country">UK</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 9 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Daily short story practice gave me the stamina to read long sentences and grasp the logic."</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/ru.png" alt="Russia Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Andrei</div>
+                                <div class="author-country">Russia</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 후기 10 -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Shadowing made my intonation sound authentic! Nobody can guess my background anymore."</p>
+                        <div class="testimonial-author">
+                            <img src="https://flagcdn.com/w80/de.png" alt="Germany Flag" class="author-flag">
+                            <div class="author-info">
+                                <div class="author-name">Julia</div>
+                                <div class="author-country">Germany</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Call 섹션 -->
+        <section class="final-call">
+            <h2 class="final-call-title">Stop being 'The Person Who Knows Korean.'<br>Start being 'The Person Who Speaks Korean.'</h2>
+            <p class="final-call-text">Smash the plateau in 30 days and rescue your Korean<br>from the 'Brain Graveyard'!</p>
+            
+            <div style="margin-top: 32px; display: flex; justify-content: center;">
+                <div style="width: 640px; height: 700px; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+                    <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" width="640" height="900" frameborder="0" marginheight="0" marginwidth="0" style="border: none;">로드 중…</iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 스크롤 애니메이션 처리
+        function handleScrollAnimation() {
+            const sections = document.querySelectorAll('.content-section');
+            const triggerPoint = window.innerHeight * 0.8;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerPoint) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // 페이지 로드 시 및 스크롤 시 애니메이션 실행
+        window.addEventListener('load', handleScrollAnimation);
+        window.addEventListener('scroll', handleScrollAnimation);
+
+        // 초기 실행
+        handleScrollAnimation();
+    </script>
+</body>
+</html>
+
