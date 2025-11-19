@@ -65,6 +65,106 @@
             height: 20px;
         }
 
+        /* 언어 토글 버튼 */
+        .lang-toggle {
+            position: fixed !important;
+            top: 24px !important;
+            right: 24px !important;
+            z-index: 99999 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            border-radius: 24px !important;
+            padding: 8px !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+            pointer-events: auto !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: auto !important;
+            height: auto !important;
+            min-width: 140px !important;
+        }
+
+        .lang-btn {
+            padding: 10px 20px !important;
+            border: 2px solid rgba(102, 126, 234, 0.3) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #667eea !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            border-radius: 16px !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            z-index: 100000 !important;
+            min-width: 60px !important;
+            text-align: center !important;
+            opacity: 0.7 !important;
+            pointer-events: auto !important;
+            visibility: visible !important;
+            display: inline-block !important;
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            border-color: #667eea !important;
+            opacity: 1 !important;
+            z-index: 100001 !important;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5) !important;
+            transform: scale(1.05) !important;
+            pointer-events: auto !important;
+            visibility: visible !important;
+            display: inline-block !important;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.15) !important;
+            border-color: rgba(102, 126, 234, 0.5) !important;
+            opacity: 0.8 !important;
+        }
+
+        .lang-btn.active:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6) !important;
+            transform: scale(1.05) !important;
+        }
+
+        /* 언어별 텍스트 숨김/표시 (기본값: 한국어) */
+        /* 기본: 한국어 표시, 영어 숨김 */
+        [data-lang="en"] {
+            display: none !important;
+        }
+
+        [data-lang="ko"] {
+            display: block !important;
+        }
+
+        /* 영어 모드: 영어 표시, 한국어 숨김 */
+        body.lang-en [data-lang="en"] {
+            display: block !important;
+        }
+
+        body.lang-en [data-lang="ko"] {
+            display: none !important;
+        }
+
+        /* 한국어 모드: 한국어 표시, 영어 숨김 */
+        body.lang-ko [data-lang="en"] {
+            display: none !important;
+        }
+
+        body.lang-ko [data-lang="ko"] {
+            display: block !important;
+        }
+
         /* Main Content */
         .main-content {
             margin-top: 80px;
@@ -488,7 +588,13 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-ko">
+    <!-- 언어 토글 버튼 -->
+    <div class="lang-toggle" id="lang-toggle" style="z-index: 99999 !important; position: fixed !important; top: 24px !important; right: 24px !important;">
+        <button class="lang-btn" data-lang="en" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important;">EN</button>
+        <button class="lang-btn active" data-lang="ko" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important;">KO</button>
+    </div>
+
     <!-- Fixed Header -->
     <header class="fixed-header">
         <div class="header-content">
@@ -496,7 +602,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                Back to Home
+                <span data-lang="en">Back to Home</span>
+                <span data-lang="ko">홈으로 돌아가기</span>
             </a>
         </div>
     </header>
@@ -506,18 +613,26 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-content">
-                <div class="hero-badge">30-Day Intensive Program</div>
+                <div class="hero-badge">
+                    <span data-lang="en">Pilot Intensive Program</span>
+                    <span data-lang="ko">파일럿 프로그램</span>
+                </div>
                 <h1 class="hero-title">
-                    Korean Trapped in Your Head,<br>
-                    Why Can You <span class="hero-highlight">'Know It'</span> But Not Speak It?
+                    <span data-lang="en">Korean Trapped in Your Head,<br>
+                    Why Can You <span class="hero-highlight">'Know It'</span> But Not Speak It?</span>
+                    <span data-lang="ko">머릿속에 갇힌 한국어,<br>
+                    왜 <span class="hero-highlight">'알고 있는데'</span> 말할 수 없을까요?</span>
                 </h1>
                 <img src="public/img/chaos.jpeg" alt="Chaos" class="section-image">
                 <p class="hero-description">
-                    The words you studied hard just disappear when you meet a native speaker.<br>
-                    Let's find the way to bring your Korean out of your head and start speaking.
+                    <span data-lang="en">The words you studied hard just disappear when you meet a native speaker.<br>
+                    Let's find the way to bring your Korean out of your head and start speaking.</span>
+                    <span data-lang="ko">열심히 공부한 단어들이 원어민을 만나면 머리가 하얗게 변해버립니다.<br>
+                    머릿속에서 한국어를 꺼내 말하기 시작하는 방법을 찾아봅시다.</span>
                 </p>
                 <a href="https://chipper-bunny-bab9f4.netlify.app/" class="cta-button" style="margin-top:20px; margin-bottom:10px; display:inline-block;">
-                    Interactive Book
+                    <span data-lang="en">Interactive Book</span>
+                    <span data-lang="ko">인터랙티브 북</span>
                 </a>
             </div>
         </section>
@@ -525,20 +640,35 @@
         <!-- Problem Recognition Section -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">Have You Ever Felt Like This?</h2>
+                <h2 class="section-title">
+                    <span data-lang="en">Have You Ever Felt Like This?</span>
+                    <span data-lang="ko">이런 경험이 있으신가요?</span>
+                </h2>
                 <img src="public/img/translate.jpeg" alt="Translate" class="section-image">
                 
                 <div class="section-content">
-                    <p>The words you studied hard just disappear when you meet a native speaker. You know the grammar, but when you try to speak, your mind goes blank and freezes. Because you always translate Korean to your native language in your head, you can't keep up with the conversation speed and miss your chance to speak.</p>
+                    <p>
+                        <span data-lang="en">The words you studied hard just disappear when you meet a native speaker. You know the grammar, but when you try to speak, your mind goes blank and freezes. Because you always translate Korean to your native language in your head, you can't keep up with the conversation speed and miss your chance to speak.</span>
+                        <span data-lang="ko">열심히 공부한 단어들이 원어민을 만나면 사라집니다. 문법은 알지만 말하려고 하면 머리가 하얗게 되고 얼어붙습니다. 그 이유는 머릿속에서 한국어를 자기 나라 말로 번역하기 때문에 원어민의 대화 속도를 따라가지 못하고 말할 기회를 놓치기 때문입니다.</span>
+                    </p>
                 </div>
 
                 <div class="highlight-box">
-                    <p><strong>Many learners are stuck in the "Language Knowledge Trap."</strong></p>
-                    <p>Your precious Korean skills are not being used in real life. They're sleeping like treasures piled up in a warehouse, trapped somewhere in <strong>"your brain's storage space."</strong></p>
+                    <p>
+                        <span data-lang="en"><strong>Many learners are stuck in the "Language Knowledge Trap."</strong></span>
+                        <span data-lang="ko"><strong>많은 학습자들이 "언어 지식 함정"에 갇혀 있습니다.</strong></span>
+                    </p>
+                    <p>
+                        <span data-lang="en">Your precious Korean skills are not being used in real life. They're sleeping like treasures piled up in a warehouse, trapped somewhere in <strong>"your brain's storage space."</strong></span>
+                        <span data-lang="ko">소중한 한국어 실력이 실제 생활에서 사용되지 않고 있습니다. 창고에 쌓인 보물처럼 잠들어 있으며, 어딘가 <strong>"당신의 뇌 저장 공간"</strong>에 갇혀 있습니다.</span>
+                    </p>
                 </div>
 
                 <div class="section-content">
-                    <p><strong>The way to bring your Korean out of your head.</strong> From now on, we'll break this problem and show you 4 scientific ways to level up to <strong>"Speaking Korean."</strong></p>
+                    <p>
+                        <span data-lang="en"><strong>The way to bring your Korean out of your head.</strong> From now on, we'll break this problem and show you 4 scientific ways to level up to <strong>"Speaking Korean."</strong></span>
+                        <span data-lang="ko"><strong>머릿속에서 한국어를 꺼내는 방법.</strong> 지금부터 이 문제를 해결하고 <strong>"한국어 말하기"</strong>로 레벨업하는 4가지 과학적 방법을 보여드리겠습니다.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -546,15 +676,45 @@
         <!-- 4 Cheat Keys Introduction -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">Try These 4 Scientific "Cheat Keys" Now!</h2>
+                <h2 class="section-title">
+                    <span data-lang="en">Try These 4 Scientific "Cheat Keys" Now!</span>
+                    <span data-lang="ko">지금 바로 이 4가지 과학적 "치트키"를 시도해보세요!</span>
+                </h2>
                 <img src="public/img/read-aloud.jpeg" alt="Read Aloud" class="section-image">
                 
                 <div class="highlight-box">
-                    <p><strong>The core idea is simple.</strong></p>
-                    <p>Move your language knowledge from the <strong>"wrong folder"</strong> in your brain to the <strong>Auto-Execute Folder</strong> where you can actually use it.</p>
-                    <p>Through <strong>"Reading Aloud"</strong>!</p>
+                    <p>
+                        <span data-lang="en"><strong>The core idea is simple.</strong></span>
+                        <span data-lang="ko"><strong>핵심 아이디어는 간단합니다.</strong></span>
+                    </p>
+                    <p>
+                        <span data-lang="en">Move your language knowledge from the <strong>"wrong folder"</strong> in your brain to the <strong>Auto-Execute Folder</strong> where you can actually use it.</span>
+                        <span data-lang="ko">눈으로만 읽은 지식은 분명 머리 속 어딘가에 있지만, 실제 활용 상황에서는 나타나지 않기 때문입니다.
+                    </p>
+                    <p>
+                        <span data-lang="en">Through <strong>"Reading Aloud"</strong>!</span>
+                        <span data-lang="ko"><strong>"소리내어 읽기"</strong>를 통해!</span> 눈으로만 보던 습관을 줄여 보세요.
+                    </p>
                 </div>
             </div>
+        </section>
+
+        <!-- CTA Section 1: After 4 Cheat Keys Introduction -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <span data-lang="en">Ready to Transform Your Korean?</span>
+                <span data-lang="ko">한국어를 변화시킬 준비가 되셨나요?</span>
+            </h2>
+            <p class="cta-description">
+                <span data-lang="en">Join our waitlist and be the first to know when the program launches.<br>
+                Start your journey to fluent Korean today!</span>
+                <span data-lang="ko">대기자 리스트에 등록하고 프로그램 런칭 소식을 가장 먼저 받아보세요.<br>
+                유창한 한국어로 가는 여정을 오늘부터 시작하세요!</span>
+            </p>
+            <a href="#form" class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'}); return false;">
+                <span data-lang="en">Join Waitlist</span>
+                <span data-lang="ko">대기자 리스트 등록하기</span>
+            </a>
         </section>
 
         <!-- Method 1 -->
@@ -562,23 +722,44 @@
             <div class="section-wrapper">
                 <div class="method-section">
                     <div class="method-header">
-                        1. Turn Knowledge in Your Head into 'Sound' and Put It in Your Body!
-                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(Production Effect: Up to 20% Better Memory)</div>
+                        <span data-lang="en">1. Turn Knowledge in Your Head into 'Sound' and Put It in Your Body!</span>
+                        <span data-lang="ko">1. 머릿속의 지식을 '소리'로 바꿔 체화시키세요!</span>
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">
+                            <span data-lang="en">(Production Effect: Up to 20% Better Memory)</span>
+                            <span data-lang="ko">(최대 20% 더 나은 기억력)</span>
+                        </div>
                     </div>
                     <img src="public/img/sound.jpeg" alt="Sound" class="method-image">
                     <div class="method-body">
                         <div class="method-problem">
-                            <h4>❌ The Problem:</h4>
-                            <p>Words or sentences you learned only with your eyes are locked in your brain's <strong>"Archive."</strong> To speak them, you need to go through a long process: <strong>'search, check, and output.'</strong> This process makes your speaking very slow.</p>
+                            <h4>
+                                <span data-lang="en">❌ The Problem:</span>
+                                <span data-lang="ko">❌ 문제:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en">Words or sentences you learned only with your eyes are locked in your brain's <strong>"Archive."</strong> To speak them, you need to go through a long process: <strong>'search, check, and output.'</strong> This process makes your speaking very slow.</span>
+                                <span data-lang="ko">눈으로만 배운 단어나 문장은 뇌의 <strong>"보관소"</strong>에 갇혀 있습니다. 말하려면 긴 과정을 거쳐야 합니다: <strong>'검색, 확인, 출력.'</strong> 이 과정은 말하기를 매우 느리게 만듭니다.</span>
+                            </p>
                         </div>
                         
                         <div class="method-solution">
-                            <h4>✅ The Solution:</h4>
-                            <p>Language should be changed from "knowledge in your head" to <strong>"sound"</strong> for use and input. When you say a word out loud, your brain tags it with <strong>"your voice"</strong> and saves it as a <strong>"Precious Memory,"</strong> not just knowledge. This memory jumps to long-term memory and becomes <strong>"automated language ability"</strong> that you can use right away when you need it.</p>
+                            <h4>
+                                <span data-lang="en">✅ The Solution:</span>
+                                <span data-lang="ko">✅ 해결책:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en">Language should be changed from "knowledge in your head" to <strong>"sound"</strong> for use and input. When you say a word out loud, your brain tags it with <strong>"your voice"</strong> and saves it as a <strong>"Precious Memory,"</strong> not just knowledge. This memory jumps to long-term memory and becomes <strong>"automated language ability"</strong> that you can use right away when you need it.</span>
+                                <span data-lang="ko">언어는 사용과 입력을 위해 "머릿속의 지식"에서 <strong>"소리"</strong>로 바뀌어야 합니다. 단어를 소리내어 말하면, 뇌는 그것을 <strong>"당신의 목소리"</strong>로 태그하고 단순한 지식이 아닌 <strong>"소중한 기억"</strong>으로 저장합니다. 이 기억은 장기 기억으로 이동하여 필요할 때 즉시 사용할 수 있는 <strong>"자동화된 언어 능력"</strong>이 됩니다.</span>
+                            </p>
                         </div>
 
                         <div class="method-evidence">
-                            <strong>📚 Scientific Evidence:</strong> Speaking out loud (Production) improves memory retention by up to 20% compared to silent reading. (MacLeod et al., 2010. University of Waterloo Study)
+                            <strong>
+                                <span data-lang="en">📚 Scientific Evidence:</span>
+                                <span data-lang="ko">📚 과학적 증거:</span>
+                            </strong>
+                            <span data-lang="en"> Speaking out loud (Production) improves memory retention by up to 20% compared to silent reading. (MacLeod et al., 2010. University of Waterloo Study)</span>
+                            <span data-lang="ko"> 소리내어 말하기(생산)는 조용히 읽는 것에 비해 기억 보존을 최대 20% 향상시킵니다. (MacLeod 외, 2010. 워털루 대학교 연구)</span>
                         </div>
                     </div>
                 </div>
@@ -590,27 +771,66 @@
             <div class="section-wrapper">
                 <div class="method-section">
                     <div class="method-header">
-                        2. Don't Hesitate!
-                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(Build Language Muscle Through Shadowing)</div>
+                        <span data-lang="en">2. Don't Hesitate!</span>
+                        <span data-lang="ko">2. 망설이지 마세요!</span>
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">
+                            <span data-lang="en">(Build Language Muscle Through Shadowing)</span>
+                            <span data-lang="ko">(입으로 연습하여 언어 근육을 만들어요)</span>
+                        </div>
                     </div>
                     <img src="public/img/donthesitate.jpeg" alt="Don't Hesitate" class="method-image">
                     <div class="method-body">
                         <div class="method-problem">
-                            <h4>❌ The Problem:</h4>
-                            <p>You often hesitate or break your rhythm while speaking because you worry about grammar mistakes or native speaker speed. This habit is the biggest enemy of natural speaking.</p>
+                            <h4>
+                                <span data-lang="en">❌ The Problem:</span>
+                                <span data-lang="ko">❌ 문제:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en">You often hesitate or break your rhythm while speaking because you worry about grammar mistakes or native speaker speed. This habit is the biggest enemy of natural speaking.</span>
+                                <span data-lang="ko">문법 실수나 원어민 속도를 걱정하여 말할 때 종종 망설이거나 리듬이 깨집니다. 이 습관은 자연스러운 말하기의 가장 큰 적입니다.</span>
+                            </p>
                         </div>
                         
                         <div class="method-solution">
-                            <h4>✅ The Solution:</h4>
-                            <p><strong>"Reading Aloud, or Shadowing"</strong> is like using a <strong>"language vending machine"</strong> where you follow native audio in real-time. This training puts Korean rhythm and intonation directly into your brain's muscle memory, and maximizes <strong>"unconscious language processing"</strong> where words come out before you think.</p>
+                            <h4>
+                                <span data-lang="en">✅ The Solution:</span>
+                                <span data-lang="ko">✅ 해결책:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en"><strong>"Reading Aloud, or Shadowing"</strong> is like using a <strong>"language vending machine"</strong> where you follow native audio in real-time. This training puts Korean rhythm and intonation directly into your brain's muscle memory, and maximizes <strong>"unconscious language processing"</strong> where words come out before you think.</span>
+                                <span data-lang="ko"><strong>"소리내어 읽기, 또는 쉐도잉"</strong>은 실시간으로 원어민 오디오를 따라가는 <strong>"언어 자판기"</strong>를 사용하는 것과 같습니다. 이 훈련은 한국어 리듬과 억양을 뇌의 근육 기억에 직접 넣고, 생각하기 전에 단어가 나오는 <strong>"무의식적 언어 처리"</strong>를 극대화합니다.</span>
+                            </p>
                         </div>
 
                         <div class="method-evidence">
-                            <strong>📚 Scientific Evidence:</strong> Shadowing is proven to be the most effective technique for improving pronunciation accuracy and speaking fluency. (Hamada & Suzuki, 2022. Related Research)
+                            <strong>
+                                <span data-lang="en">📚 Scientific Evidence:</span>
+                                <span data-lang="ko">📚 과학적 증거:</span>
+                            </strong>
+                            <span data-lang="en"> Shadowing is proven to be the most effective technique for improving pronunciation accuracy and speaking fluency. (Hamada & Suzuki, 2022. Related Research)</span>
+                            <span data-lang="ko"> 쉐도잉은 발음 정확도와 말하기 유창성을 향상시키는 가장 효과적인 기법으로 입증되었습니다. (Hamada & Suzuki, 2022. 관련 연구)</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- CTA Section 2: After Method 2 -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <span data-lang="en">Don't Hesitate - Start Now!</span>
+                <span data-lang="ko">망설이지 마세요 - 지금 시작하세요!</span>
+            </h2>
+            <p class="cta-description">
+                <span data-lang="en">Build your language muscle through shadowing and reading aloud.<br>
+                Reserve your spot in our intensive program!</span>
+                <span data-lang="ko">쉐도잉과 소리내어 읽기로 언어 근육을 만들어보세요.<br>
+                집중 프로그램에 자리를 예약하세요!</span>
+            </p>
+            <a href="#form" class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'}); return false;">
+                <span data-lang="en">Reserve Your Spot</span>
+                <span data-lang="ko">자리 예약하기</span>
+            </a>
         </section>
 
         <!-- Method 3 -->
@@ -618,23 +838,44 @@
             <div class="section-wrapper">
                 <div class="method-section">
                     <div class="method-header">
-                        3. Don't Create Sentences in Your Native Language!
-                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">(How to Absorb Real Korean Through Sound)</div>
+                        <span data-lang="en">3. Don't Create Sentences in Your Native Language!</span>
+                        <span data-lang="ko">3. 자신의 나라 말로 한국어 문장을 만들지 마세요!</span>
+                        <div style="font-size: 16px; font-weight: 400; margin-top: 8px;">
+                            <span data-lang="en">(How to Absorb Real Korean Through Sound)</span>
+                            <span data-lang="ko">(소리를 통해 진짜 한국어를 흡수하는 방법)</span>
+                        </div>
                     </div>
                     <img src="public/img/controlV.jpeg" alt="Control V" class="method-image">
                     <div class="method-body">
                         <div class="method-problem">
-                            <h4>❌ The Problem:</h4>
-                            <p>Every time you hear Korean, your brain keeps translating Korean to your native language. When you speak, you create sentences in your native language first and then translate them to Korean. This makes you speak slowly and creates awkward expressions.</p>
+                            <h4>
+                                <span data-lang="en">❌ The Problem:</span>
+                                <span data-lang="ko">❌ 문제:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en">Every time you hear Korean, your brain keeps translating Korean to your native language. When you speak, you create sentences in your native language first and then translate them to Korean. This makes you speak slowly and creates awkward expressions.</span>
+                                <span data-lang="ko">한국어를 들을 때마다 학습자는 한국어를 자기 나라말로 번역합니다. 말할 때 역시 자기 나라말로 문장을 만들고 그것을 한국어로 번역한 채 말합니다. 이것은 말하기를 느리게 만들고 어색한 표현을 만듭니다. 이런 번역투의 한국어는 아무도 알아듣지 못합니다.</span>
+                            </p>
                         </div>
                         
                         <div class="method-solution">
-                            <h4>✅ The Solution:</h4>
-                            <p>Read and speak what real Koreans say. <strong>"Audio + Short Story"</strong> combination lets you skip this translation process completely. You absorb sentences in their full context and accept Korean as Korean itself, so you can respond right away.</p>
+                            <h4>
+                                <span data-lang="en">✅ The Solution:</span>
+                                <span data-lang="ko">✅ 해결책:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en">Read and speak what real Koreans say. <strong>"Audio + Short Story"</strong> combination lets you skip this translation process completely. You absorb sentences in their full context and accept Korean as Korean itself, so you can respond right away.</span>
+                                <span data-lang="ko">진짜 한국인이 말하는 것을 읽고 말하세요. <strong>"오디오 + 짧은 이야기"</strong> 조합은 이 번역 과정을 완전히 건너뛰게 해줍니다. 전체 맥락에서 문장을 흡수하고 한국어를 한국어 그대로 받아들이므로 즉시 응답할 수 있습니다.</span>
+                            </p>
                         </div>
 
                         <div class="method-evidence">
-                            <strong>📚 Scientific Evidence:</strong> Reading practice focused on production practice, not just comprehension-focused study, improves vocabulary and grammar understanding more effectively. (Cognitive Load Theory)
+                            <strong>
+                                <span data-lang="en">📚 Scientific Evidence:</span>
+                                <span data-lang="ko">📚 과학적 증거:</span>
+                            </strong>
+                            <span data-lang="en"> Reading practice focused on production practice, not just comprehension-focused study, improves vocabulary and grammar understanding more effectively. (Cognitive Load Theory)</span>
+                            <span data-lang="ko"> 이해 중심 학습뿐만 아니라 말하기 연습에 중점을 둔 읽기 연습은 어휘와 문법 이해를 더 효과적으로 향상시킵니다. (인지 부하 이론)</span>
                         </div>
                     </div>
                 </div>
@@ -646,51 +887,117 @@
             <div class="section-wrapper">
                 <div class="method-section">
                     <div class="method-header">
-                        4. Master All Details with Short, Deep Stories!
+                        <span data-lang="en">4. Master All Details with Short, Deep Stories!</span>
+                        <span data-lang="ko">4. 짧지만 깊이 있는 이야기로 <br>한국어의 많은 세부사항을 마스터하세요!</span>
                     </div>
                     <img src="public/img/shortstory.jpeg" alt="Short Story" class="method-image">
                     <div class="method-body">
                         <div class="method-problem">
-                            <h4>❌ The Problem:</h4>
-                            <p>Long and complex texts can be scary (Cognitive Load). This reduces your <strong>'Working Memory'</strong> efficiency, increases fatigue, and makes you want to give up.</p>
+                            <h4>
+                                <span data-lang="en">❌ The Problem:</span>
+                                <span data-lang="ko">❌ 문제:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en">Long and complex texts can be scary (Cognitive Load). This reduces your <strong>'Working Memory'</strong> efficiency, increases fatigue, and makes you want to give up.</span>
+                                <span data-lang="ko">길고 복잡한 텍스트는 진입장벽이 있습니다(인지 부하). 이것은 <strong>'학습 기억'</strong> 효율을 감소시키고, 피로를 증가시키며, 포기하고 싶게 만듭니다.</span>
+                            </p>
                         </div>
                         
                         <div class="method-solution">
-                            <h4>✅ The Solution:</h4>
-                            <p><strong>Short stories</strong> are the <strong>"perfect data size"</strong> that your brain can process without getting tired. Learning with short stories lets you understand the story perfectly and master every small detail of sentence structure and vocabulary use. The short length helps you absorb the whole context without missing anything.</p>
+                            <h4>
+                                <span data-lang="en">✅ The Solution:</span>
+                                <span data-lang="ko">✅ 해결책:</span>
+                            </h4>
+                            <p>
+                                <span data-lang="en"><strong>Short stories</strong> are the <strong>"perfect data size"</strong> that your brain can process without getting tired. Learning with short stories lets you understand the story perfectly and master every small detail of sentence structure and vocabulary use. The short length helps you absorb the whole context without missing anything.</span>
+                                <span data-lang="ko"><strong>짧은 이야기</strong>는 뇌가 피곤해지지 않고 처리할 수 있는 <strong>"완벽한 데이터 크기"</strong>입니다. 짧은 이야기로 학습하면 이야기를 완벽하게 이해하고 문장 구조와 어휘 사용의 모든 작은 세부사항까지 마스터할 수 있습니다. 짧은 길이는 아무것도 놓치지 않고 전체 맥락을 흡수하는 데 도움이 됩니다.</span>
+                            </p>
                         </div>
 
                         <div class="method-evidence">
-                            <strong>📚 Scientific Evidence:</strong> Managing information load improves working memory efficiency and greatly increases learning success. (Hopman & MacDonald, 2018. Wisconsin-Madison University)
+                            <strong>
+                                <span data-lang="en">📚 Scientific Evidence:</span>
+                                <span data-lang="ko">📚 과학적 증거:</span>
+                            </strong>
+                            <span data-lang="en"> Managing information load improves working memory efficiency and greatly increases learning success. (Hopman & MacDonald, 2018. Wisconsin-Madison University)</span>
+                            <span data-lang="ko"> 정보 부하 관리는 학습 기억 효율을 향상시키고 학습 성공을 크게 증가시킵니다. (Hopman & MacDonald, 2018. 위스콘신-매디슨 대학교)</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- CTA Section 3: After Method 4 -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <span data-lang="en">Master Korean with Short Stories</span>
+                <span data-lang="ko">짧은 이야기로 한국어를 마스터하세요</span>
+            </h2>
+            <p class="cta-description">
+                <span data-lang="en">Learn through engaging short stories and achieve fluency faster.<br>
+                Join our waitlist to get early access!</span>
+                <span data-lang="ko">매력적인 짧은 이야기로 배우고 더 빠르게 유창성을 달성하세요.<br>
+                대기자 리스트에 등록하여 조기 접근 권한을 받으세요!</span>
+            </p>
+            <a href="#form" class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'}); return false;">
+                <span data-lang="en">Get Early Access</span>
+                <span data-lang="ko">조기 접근 권한 받기</span>
+            </a>
+        </section>
+
         <!-- Why Short Stories -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">Why Do 'Short Stories' Boost Your Fluency So Much?</h2>
+                <h2 class="section-title">
+                    <span data-lang="en">Why Do 'Short Stories' Boost Your Fluency So Much?</span>
+                    <span data-lang="ko">왜 '짧은 이야기'가 유창성을 이렇게 크게 향상시킬까요?</span>
+                </h2>
                 
-                <p class="section-content">We strongly recommend short story learning because it's the most efficient and fun tool for intermediate learners to reach fluency.</p>
+                <p class="section-content">
+                    <span data-lang="en">We strongly recommend short story learning because it's the most efficient and fun tool for intermediate learners to reach fluency.</span>
+                    <span data-lang="ko">중급 학습자가 유창성에 도달하기 위한 가장 효율적이고 재미있는 도구이기 때문에 짧은 이야기 학습을 강력히 추천합니다.</span>
+                </p>
 
                 <ul class="benefits-list">
                     <li>
-                        <strong>1. Amazing Memory Boost from Completion</strong>
-                        <p>Short stories finish right there. This gives learners immediate satisfaction and helps them remember the beginning, end, whole context, and emotions as one complete piece. This completion effect guarantees much better memory retention than learning separate words.</p>
+                        <strong>
+                            <span data-lang="en">1. Amazing Memory Boost from Completion</span>
+                            <span data-lang="ko">1. 완성으로 인한 놀라운 기억력 향상</span>
+                        </strong>
+                        <p>
+                            <span data-lang="en">Short stories finish right there. This gives learners immediate satisfaction and helps them remember the beginning, end, whole context, and emotions as one complete piece. This completion effect guarantees much better memory retention than learning separate words.</span>
+                            <span data-lang="ko">짧은 이야기는 금새 끝납니다. 이것은 학습자에게 즉각적인 만족감을 주고, 시작, 끝, 전체 맥락, 감정을 하나의 완전한 조각으로 기억하는 데 도움이 됩니다. 이 완성 효과는 개별 단어를 배우는 것보다 훨씬 더 나은 기억 효율을 높입니다.</span>
+                        </p>
                     </li>
                     <li>
-                        <strong>2. Real-Life Feel of Living Korean</strong>
-                        <p>Our stories contain vivid modern Korean conversations and their contexts. Practice real Korean that actual Koreans use, not stiff textbook sentences, and learn modern language sense.</p>
+                        <strong>
+                            <span data-lang="en">2. Real-Life Feel of Living Korean</span>
+                            <span data-lang="ko">2. 살아있는 한국어</span>
+                        </strong>
+                        <p>
+                            <span data-lang="en">Our stories contain vivid modern Korean conversations and their contexts. Practice real Korean that actual Koreans use, not stiff textbook sentences, and learn modern language sense.</span>
+                            <span data-lang="ko">우리 이야기에는 생생한 현대 한국어 대화와 그 맥락이 포함되어 있습니다. 딱딱한 교과서 문장이 아닌 실제 한국인이 사용하는 진짜 한국어를 연습하고 현대적인 언어 감각을 배우세요.</span>
+                        </p>
                     </li>
                     <li>
-                        <strong>3. Build Stamina and Logic Understanding</strong>
-                        <p>Practicing one complete short story every day builds <strong>"language stamina"</strong> to understand long sentences and logical structures. When this habit builds up, you naturally gain the power to move to advanced levels like short novels or longer works.</p>
+                        <strong>
+                            <span data-lang="en">3. Build Stamina and Logic Understanding</span>
+                            <span data-lang="ko">3. 지구력과 논리 이해 구축</span>
+                        </strong>
+                        <p>
+                            <span data-lang="en">Practicing one complete short story every day builds <strong>"language stamina"</strong> to understand long sentences and logical structures. When this habit builds up, you naturally gain the power to move to advanced levels like short novels or longer works.</span>
+                            <span data-lang="ko">매일 하나의 완전한 짧은 이야기를 연습하면 긴 문장과 논리적 구조를 이해하는 <strong>"언어 지구력"</strong>이 구축됩니다. 이 습관이 쌓이면, 짧은 소설이나 더 긴 작품과 같은 고급 수준으로 이동할 수 있는 힘을 자연스럽게 얻습니다.</span>
+                        </p>
                     </li>
                     <li>
-                        <strong>4. Fun Content Proven Worldwide</strong>
-                        <p>Our stories are materials already loved worldwide through copyright exports, proven for their fun and quality. Learning becomes not a boring homework but an <strong>"enjoyable binge-watch"</strong> where you're curious about the next story.</p>
+                        <strong>
+                            <span data-lang="en">4. Fun Content Proven Worldwide</span>
+                            <span data-lang="ko">4. 전 세계적으로 입증된 재미있는 콘텐츠</span>
+                        </strong>
+                        <p>
+                            <span data-lang="en">Our stories are materials already loved worldwide through copyright exports, proven for their fun and quality. Learning becomes not a boring homework but an <strong>"enjoyable binge-watch"</strong> where you're curious about the next story.</span>
+                            <span data-lang="ko">우리 이야기는 저작권 수출을 통해 전 세계적으로 이미 사랑받는 자료로, 재미와 품질이 입증되었습니다. 학습은 지루한 숙제가 아니라 다음 이야기가 궁금한 <strong>"즐거운 몰아보기"</strong>가 됩니다.</span>
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -699,133 +1006,217 @@
         <!-- Testimonials Section -->
         <section class="content-section">
             <div class="section-wrapper">
-                <h2 class="section-title">Real Stories from Success: How Their Korean Changed!</h2>
+                <h2 class="section-title">
+                    <span data-lang="en">Real Stories from Success: How Their Korean Changed!</span>
+                    <span data-lang="ko">성공한 사람들의 실제 이야기: 그들의 한국어가 어떻게 바뀌었나요!</span>
+                </h2>
                 
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I studied Korean for 3 years but never felt confident speaking.
-                            With this method, I could talk naturally with Korean friends in just 2 weeks!"
+                            <span data-lang="en">"I studied Korean for 3 years but never felt confident speaking.
+                            With this method, I could talk naturally with Korean friends in just 2 weeks!"</span>
+                            <span data-lang="ko">"한국어를 3년 동안 공부했지만 말하기에 자신감이 없었습니다.
+                            이 방법으로 단 2주 만에 한국 친구들과 자연스럽게 대화할 수 있었습니다!"</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>Sarah M.</strong>
-                            <span>USA, Intermediate Learner</span>
+                            <span>
+                                <span data-lang="en">USA, Intermediate Learner</span>
+                                <span data-lang="ko">미국, 중급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I used to speak slowly because I always translated to English in my head.
-                            Using direct absorption, Korean just comes out without thinking. Amazing!"
+                            <span data-lang="en">"I used to speak slowly because I always translated to English in my head.
+                            Using direct absorption, Korean just comes out without thinking. Amazing!"</span>
+                            <span data-lang="ko">"머릿속에서 항상 영어로 번역해서 말이 느렸습니다.
+                            직접 흡수 방식을 사용하니 생각하지 않고도 한국어가 나옵니다. 놀라워요!"</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>James L.</strong>
-                            <span>UK, Advanced Learner</span>
+                            <span>
+                                <span data-lang="en">UK, Advanced Learner</span>
+                                <span data-lang="ko">영국, 고급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I didn't know shadowing was this effective. My pronunciation got better
-                            and I speak faster. Watching Korean dramas is more fun now!"
+                            <span data-lang="en">"I didn't know shadowing was this effective. My pronunciation got better
+                            and I speak faster. Watching Korean dramas is more fun now!"</span>
+                            <span data-lang="ko">"소리내어 읽기가 이렇게 효과적인지 몰랐습니다. 발음이 좋아지고
+                            말하기가 빨라졌습니다. 이제 한국 드라마 보는 게 더 재미있어요!"</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>Maria G.</strong>
-                            <span>Spain, Basic-Intermediate Learner</span>
+                            <span>
+                                <span data-lang="en">Spain, Basic-Intermediate Learner</span>
+                                <span data-lang="ko">스페인, 초중급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I practiced 15 minutes daily with short stories and passed a Korean job interview in one month.
-                            So many expressions I could use in real situations!"
+                            <span data-lang="en">"I practiced 15 minutes daily with short stories and passed a Korean job interview in one month.
+                            So many expressions I could use in real situations!"</span>
+                            <span data-lang="ko">"짧은 이야기로 매일 15분씩 연습했고 한 달 만에 한국 취업 면접에 합격했습니다.
+                            실제 상황에서 사용할 수 있는 표현이 정말 많아요!"</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>Chen W.</strong>
-                            <span>China, Intermediate Learner</span>
+                            <span>
+                                <span data-lang="en">China, Intermediate Learner</span>
+                                <span data-lang="ko">중국, 중급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I only studied grammar before starting this program.
-                            I didn't know reading aloud was this important. Now I have confidence!"
+                            <span data-lang="en">"I only studied grammar before starting this program.
+                            I didn't know reading aloud was this important. Now I have confidence!"</span>
+                            <span data-lang="ko">"이 프로그램을 시작하기 전에는 문법만 공부했습니다.
+                            소리내어 읽기가 이렇게 중요한지 몰랐어요. 이제 자신감이 생겼습니다!"</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>Anna K.</strong>
-                            <span>Russia, Intermediate Learner</span>
+                            <span>
+                                <span data-lang="en">Russia, Intermediate Learner</span>
+                                <span data-lang="ko">러시아, 중급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I work in Korea and used to get nervous at every meeting.
-                            After practicing this way, I can now share my opinions naturally."
+                            <span data-lang="en">"I work in Korea and used to get nervous at every meeting.
+                            After practicing this way, I can now share my opinions naturally."</span>
+                            <span data-lang="ko">"한국에서 일하는데 매번 회의 때 긴장했습니다.
+                            이렇게 연습한 후 이제는 의견을 자연스럽게 나눌 수 있습니다."</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>David P.</strong>
-                            <span>Australia, Advanced Learner</span>
+                            <span>
+                                <span data-lang="en">Australia, Advanced Learner</span>
+                                <span data-lang="ko">호주, 고급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "The stories were short, so I started without pressure. I got hooked on the fun of completing one each day.
-                            From week 3, Korean started coming out automatically!"
+                            <span data-lang="en">"The stories were short, so I started without pressure. I got hooked on the fun of completing one each day.
+                            From week 3, Korean started coming out automatically!"</span>
+                            <span data-lang="ko">"이야기가 짧아서 부담 없이 시작했습니다. 매일 하나씩 완성하는 재미에 빠졌어요.
+                            3주차부터 한국어가 자동으로 나오기 시작했습니다!"</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>Lisa T.</strong>
-                            <span>Germany, Intermediate Learner</span>
+                            <span>
+                                <span data-lang="en">Germany, Intermediate Learner</span>
+                                <span data-lang="ko">독일, 중급 학습자</span>
+                            </span>
                         </div>
                     </div>
 
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
                         <p class="testimonial-text">
-                            "I passed TOPIK level 5 but speaking was still hard.
-                            Thanks to this program, I finally turned 'what I know' into 'what I can speak.'"
+                            <span data-lang="en">"I passed TOPIK level 5 but speaking was still hard.
+                            Thanks to this program, I finally turned 'what I know' into 'what I can speak.'"</span>
+                            <span data-lang="ko">"토픽 5급을 합격했지만 말하기는 여전히 어려웠습니다.
+                            이 프로그램 덕분에 마침내 '알고 있는 것'을 '말할 수 있는 것'으로 바꿨습니다."</span>
                         </p>
                         <div class="testimonial-author">
                             <strong>Yuki S.</strong>
-                            <span>Japan, Advanced Learner</span>
+                            <span>
+                                <span data-lang="en">Japan, Advanced Learner</span>
+                                <span data-lang="ko">일본, 고급 학습자</span>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- CTA Section 4: After Testimonials -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <span data-lang="en">Join Success Stories Like These</span>
+                <span data-lang="ko">이런 성공 스토리에 합류하세요</span>
+            </h2>
+            <p class="cta-description">
+                <span data-lang="en">See how others transformed their Korean speaking skills.<br>
+                Be part of the next success story - join our waitlist now!</span>
+                <span data-lang="ko">다른 사람들이 어떻게 한국어 말하기 실력을 변화시켰는지 확인하세요.<br>
+                다음 성공 스토리의 주인공이 되세요 - 지금 대기자 리스트에 등록하세요!</span>
+            </p>
+            <a href="#form" class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'}); return false;">
+                <span data-lang="en">Join Waitlist Now</span>
+                <span data-lang="ko">지금 대기자 리스트 등록하기</span>
+            </a>
+        </section>
+
         <!-- Final Question & CTA -->
         <section class="cta-section">
-            <h2 class="cta-title">One Final Question.</h2>
+            <h2 class="cta-title">
+                <span data-lang="en">One Final Question.</span>
+                <span data-lang="ko">마지막 질문 하나.</span>
+            </h2>
             <p class="cta-description">
-                Is your Korean just <strong>'passive knowledge'</strong> sleeping in your head?<br>
-                Or is it a <strong>'living language'</strong> communicating with the world through your mouth?
+                <span data-lang="en">Is your Korean just <strong>'passive knowledge'</strong> sleeping in your head?<br>
+                Or is it a <strong>'living language'</strong> communicating with the world through your mouth?</span>
+                <span data-lang="ko">당신의 한국어는 머릿속 어딘가에 <strong>'잠자는 지식'</strong>일까요?<br>
+                아니면 입을 통해 세상과 소통하는 <strong>'살아있는 언어'</strong>일까요?</span>
             </p>
             <div style="margin: 40px 0;">
                 <p style="font-size: clamp(20px, 3vw, 32px); font-weight: 700; margin-bottom: 16px;">
-                    Break Through Your Plateau in Just 30 Days<br>
-                    and Bring Your Korean Out of Your Head!
+                    <span data-lang="en">Break Through Your Plateau in Just 30 Days<br>
+                    and Bring Your Korean Out of Your Head!</span>
+                    <span data-lang="ko">단 30일 만에 정체를 돌파하고<br>
+                    머릿속에서 한국어를 꺼내세요!</span>
                 </p>
                 <img src="public/img/interactive.png" alt="Interactive" class="section-image" style="margin-top: 24px;">
             </div>
-            <a href="https://chipper-bunny-bab9f4.netlify.app/" class="cta-button">Interactive Book</a>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+                <a href="https://chipper-bunny-bab9f4.netlify.app/" class="cta-button">
+                    <span data-lang="en">Interactive Book</span>
+                    <span data-lang="ko">인터랙티브 북</span>
+                </a>
+                <a href="#form" class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'}); return false;" style="background: rgba(255, 255, 255, 0.2); border: 2px solid white;">
+                    <span data-lang="en">Join Waitlist</span>
+                    <span data-lang="ko">대기자 리스트 등록</span>
+                </a>
+            </div>
         </section>
 
         <!-- Google Form Section -->
         <section class="content-section" id="form">
             <div class="section-wrapper">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 32px;">Sign Up Now</h2>
+                <h2 class="section-title" style="text-align: center; margin-bottom: 16px;">
+                    <span data-lang="en">Join Our Waitlist</span>
+                    <span data-lang="ko">대기자 리스트에 등록하세요</span>
+                </h2>
+                <p class="section-subtitle" style="text-align: center; margin-bottom: 32px;">
+                    <span data-lang="en">Fill out the form below with your name, email, and Korean level to be notified when the program launches.</span>
+                    <span data-lang="ko">아래 폼에 이름, 이메일, 한국어 레벨을 입력하시면 프로그램 런칭 시 알림을 받으실 수 있습니다.</span>
+                </p>
                 <!-- Responsive Google Form Container -->
                 <div class="form-container">
                     <div class="form-wrapper">
-                        <iframe src="https://docs.google.com/forms/d/1MMl-dAx7gt-liFXD0bWTOhoRAvsz38xxAWRn52ZcA4c/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">Loading…</iframe>
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdbMvqAxlYhiRSBdhrp71JClc6ammEZi-MRCs8rKDVBO8QzDg/viewform?usp=publish-editor" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">Loading…</iframe>
                     </div>
                 </div>
             </div>
@@ -876,6 +1267,104 @@
                     }, 100);
                 });
             }
+        });
+        // 언어 전환 함수
+        window.switchLanguage = function(lang) {
+            // body에 언어 클래스 추가/제거
+            document.body.classList.remove('lang-ko', 'lang-en');
+            document.body.classList.add('lang-' + lang);
+            
+            // 버튼 활성화 상태 변경
+            const langToggle = document.getElementById('lang-toggle');
+            if (langToggle) {
+                const allButtons = langToggle.querySelectorAll('.lang-btn');
+                allButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                const activeBtn = langToggle.querySelector(`.lang-btn[data-lang="${lang}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+            }
+            
+            // localStorage에 언어 저장
+            localStorage.setItem('preferred-language', lang);
+        };
+        
+        // 전역 함수로도 선언 (onclick 호환성)
+        function switchLanguage(lang) {
+            window.switchLanguage(lang);
+        }
+
+        // 언어 토글 버튼에 이벤트 리스너 추가
+        function setupLanguageToggle() {
+            const langToggle = document.getElementById('lang-toggle');
+            if (langToggle) {
+                const buttons = langToggle.querySelectorAll('.lang-btn');
+                console.log('Found buttons:', buttons.length);
+                
+                buttons.forEach(function(button) {
+                    const lang = button.getAttribute('data-lang');
+                    console.log('Setting up button for language:', lang);
+                    
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('=== Button clicked ===');
+                        console.log('Button language:', lang);
+                        
+                        if (lang === 'en' || lang === 'ko') {
+                            window.switchLanguage(lang);
+                        } else {
+                            console.error('Invalid language from button:', lang);
+                        }
+                    }, { capture: false, passive: false });
+                });
+                
+                console.log('Language toggle event listeners attached to', buttons.length, 'buttons');
+            } else {
+                console.error('Language toggle container not found');
+            }
+        }
+
+        // 페이지 로드 시 저장된 언어 불러오기 (기본값: 한국어)
+        (function initLanguage() {
+            function applyLanguage() {
+                const savedLang = localStorage.getItem('preferred-language');
+                const langToUse = (savedLang === 'en' || savedLang === 'ko') ? savedLang : 'ko';
+                
+                document.body.classList.remove('lang-ko', 'lang-en');
+                document.body.classList.add('lang-' + langToUse);
+                
+                const langToggle = document.getElementById('lang-toggle');
+                if (langToggle) {
+                    const allButtons = langToggle.querySelectorAll('.lang-btn');
+                    allButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    const activeBtn = langToggle.querySelector(`.lang-btn[data-lang="${langToUse}"]`);
+                    if (activeBtn) {
+                        activeBtn.classList.add('active');
+                    }
+                }
+                
+                localStorage.setItem('preferred-language', langToUse);
+            }
+            
+            if (document.body) {
+                applyLanguage();
+                setupLanguageToggle();
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    applyLanguage();
+                    setupLanguageToggle();
+                });
+            }
+        })();
+        
+        // DOMContentLoaded 시에도 이벤트 리스너 설정
+        document.addEventListener('DOMContentLoaded', function() {
+            setupLanguageToggle();
         });
     </script>
 </body>

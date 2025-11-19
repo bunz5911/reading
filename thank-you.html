@@ -186,6 +186,74 @@
             vertical-align: middle;
         }
 
+        /* 언어 토글 버튼 */
+        .lang-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .lang-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .lang-btn.active:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* 언어별 텍스트 숨김/표시 (기본값: 한국어) */
+        /* 기본: 한국어 표시, 영어 숨김 */
+        [data-lang="en"] {
+            display: none !important;
+        }
+
+        [data-lang="ko"] {
+            display: block !important;
+        }
+
+        /* 영어 모드: 영어 표시, 한국어 숨김 */
+        body.lang-en [data-lang="en"] {
+            display: block !important;
+        }
+
+        body.lang-en [data-lang="ko"] {
+            display: none !important;
+        }
+
+        /* 한국어 모드: 한국어 표시, 영어 숨김 */
+        body.lang-ko [data-lang="en"] {
+            display: none !important;
+        }
+
+        body.lang-ko [data-lang="ko"] {
+            display: block !important;
+        }
+
         @media (max-width: 768px) {
             .thank-you-container {
                 padding: 40px 24px;
@@ -197,7 +265,13 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-ko">
+    <!-- 언어 토글 버튼 -->
+    <div class="lang-toggle">
+        <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+        <button class="lang-btn active" onclick="switchLanguage('ko')" data-lang="ko">KO</button>
+    </div>
+
     <div class="thank-you-container">
         <!-- 성공 아이콘 -->
         <div class="success-icon">
@@ -207,16 +281,34 @@
         </div>
 
         <!-- 제목 -->
-        <h1>🎉 Thank You!</h1>
-        <p class="subtitle">Your free sample lesson is ready to download.</p>
+        <h1>
+            <span data-lang="en">🎉 Thank You!</span>
+            <span data-lang="ko">🎉 감사합니다!</span>
+        </h1>
+        <p class="subtitle">
+            <span data-lang="en">Your free sample lesson is ready to download.</span>
+            <span data-lang="ko">무료 샘플 레슨을 다운로드할 준비가 되었습니다.</span>
+        </p>
 
         <!-- 다운로드 섹션 -->
         <div class="download-section">
-            <div class="download-title">📥 Your Free Sample Pack Includes:</div>
+            <div class="download-title">
+                <span data-lang="en">📥 Your Free Sample Pack Includes:</span>
+                <span data-lang="ko">📥 무료 샘플 팩에는 다음이 포함됩니다:</span>
+            </div>
             <ul class="download-list">
-                <li>Korean Short Story (PDF)</li>
-                <li>Native Audio Recording (MP3)</li>
-                <li>Read-Aloud Practice Guide (PDF)</li>
+                <li>
+                    <span data-lang="en">Korean Short Story (PDF)</span>
+                    <span data-lang="ko">한국어 짧은 이야기 (PDF)</span>
+                </li>
+                <li>
+                    <span data-lang="en">Native Audio Recording (MP3)</span>
+                    <span data-lang="ko">원어민 오디오 녹음 (MP3)</span>
+                </li>
+                <li>
+                    <span data-lang="en">Read-Aloud Practice Guide (PDF)</span>
+                    <span data-lang="ko">소리내어 읽기 연습 가이드 (PDF)</span>
+                </li>
             </ul>
 
             <!-- 다운로드 버튼 -->
@@ -227,12 +319,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Download Now
+                <span data-lang="en">Download Now</span>
+                <span data-lang="ko">지금 다운로드</span>
             </a>
 
             <p class="help-text">
-                Click the button above to open Google Drive and download all files.<br>
-                You can download individual files or download all as a ZIP.
+                <span data-lang="en">Click the button above to open Google Drive and download all files.<br>
+                You can download individual files or download all as a ZIP.</span>
+                <span data-lang="ko">위 버튼을 클릭하여 Google Drive를 열고 모든 파일을 다운로드하세요.<br>
+                개별 파일을 다운로드하거나 ZIP으로 모두 다운로드할 수 있습니다.</span>
             </p>
         </div>
 
@@ -241,7 +336,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Home
+            <span data-lang="en">Back to Home</span>
+            <span data-lang="ko">홈으로 돌아가기</span>
         </a>
     </div>
 
@@ -256,6 +352,52 @@
             console.log('Download button clicked');
             // Google Analytics 등 추적 코드 추가 가능
         });
+
+        // 언어 전환 함수
+        function switchLanguage(lang) {
+            // body에 언어 클래스 추가/제거
+            document.body.classList.remove('lang-ko', 'lang-en');
+            document.body.classList.add('lang-' + lang);
+            
+            // 버튼 활성화 상태 변경
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            
+            // localStorage에 언어 저장
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // 페이지 로드 시 저장된 언어 불러오기 (기본값: 한국어)
+        (function initLanguage() {
+            function applyLanguage() {
+                const savedLang = localStorage.getItem('preferred-language');
+                const langToUse = (savedLang === 'en' || savedLang === 'ko') ? savedLang : 'ko';
+                
+                document.body.classList.remove('lang-ko', 'lang-en');
+                document.body.classList.add('lang-' + langToUse);
+                
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                const activeBtn = document.querySelector(`.lang-btn[data-lang="${langToUse}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+                
+                localStorage.setItem('preferred-language', langToUse);
+            }
+            
+            if (document.body) {
+                applyLanguage();
+            } else {
+                document.addEventListener('DOMContentLoaded', applyLanguage);
+            }
+        })();
     </script>
 </body>
 </html>
