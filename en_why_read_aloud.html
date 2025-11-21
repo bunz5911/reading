@@ -407,11 +407,31 @@
             font-size: 16px;
             font-weight: 700;
             color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .testimonial-author img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .testimonial-author span {
             font-size: 14px;
             color: #888;
+        }
+
+        /* Testimonials Section Group Image */
+        .testimonials-group-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 32px auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         /* CTA Section */
@@ -562,6 +582,16 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+            }
+
+            .testimonials-group-image {
+                margin: 24px auto;
+                border-radius: 8px;
+            }
+
+            .testimonial-author img {
+                width: 70px;
+                height: 70px;
             }
 
             .form-container {
@@ -1011,6 +1041,8 @@
                     <span data-lang="ko">성공한 사람들의 실제 이야기: 그들의 한국어가 어떻게 바뀌었나요!</span>
                 </h2>
                 
+                <img src="public/people/all.png" alt="All Participants" class="testimonials-group-image">
+                
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
@@ -1021,7 +1053,10 @@
                             이 방법으로 단 2주 만에 한국 친구들과 자연스럽게 대화할 수 있었습니다!"</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>Sarah M.</strong>
+                            <strong>
+                                Sarah M.
+                                <img src="public/people/sarah.png" alt="Sarah M.">
+                            </strong>
                             <span>
                                 <span data-lang="en">USA, Intermediate Learner</span>
                                 <span data-lang="ko">미국, 중급 학습자</span>
@@ -1038,7 +1073,10 @@
                             직접 흡수 방식을 사용하니 생각하지 않고도 한국어가 나옵니다. 놀라워요!"</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>James L.</strong>
+                            <strong>
+                                James L.
+                                <img src="public/people/james.png" alt="James L.">
+                            </strong>
                             <span>
                                 <span data-lang="en">UK, Advanced Learner</span>
                                 <span data-lang="ko">영국, 고급 학습자</span>
@@ -1055,7 +1093,10 @@
                             말하기가 빨라졌습니다. 이제 한국 드라마 보는 게 더 재미있어요!"</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>Maria G.</strong>
+                            <strong>
+                                Maria G.
+                                <img src="public/people/maria.png" alt="Maria G.">
+                            </strong>
                             <span>
                                 <span data-lang="en">Spain, Basic-Intermediate Learner</span>
                                 <span data-lang="ko">스페인, 초중급 학습자</span>
@@ -1072,7 +1113,10 @@
                             실제 상황에서 사용할 수 있는 표현이 정말 많아요!"</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>Chen W.</strong>
+                            <strong>
+                                Chen W.
+                                <img src="public/people/chen.png" alt="Chen W.">
+                            </strong>
                             <span>
                                 <span data-lang="en">China, Intermediate Learner</span>
                                 <span data-lang="ko">중국, 중급 학습자</span>
@@ -1089,7 +1133,10 @@
                             소리내어 읽기가 이렇게 중요한지 몰랐어요. 이제 자신감이 생겼습니다!"</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>Anna K.</strong>
+                            <strong>
+                                Anna K.
+                                <img src="public/people/anna.png" alt="Anna K.">
+                            </strong>
                             <span>
                                 <span data-lang="en">Russia, Intermediate Learner</span>
                                 <span data-lang="ko">러시아, 중급 학습자</span>
@@ -1106,7 +1153,10 @@
                             이렇게 연습한 후 이제는 의견을 자연스럽게 나눌 수 있습니다."</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>David P.</strong>
+                            <strong>
+                                David P.
+                                <img src="public/people/david.png" alt="David P.">
+                            </strong>
                             <span>
                                 <span data-lang="en">Australia, Advanced Learner</span>
                                 <span data-lang="ko">호주, 고급 학습자</span>
@@ -1123,7 +1173,10 @@
                             3주차부터 한국어가 자동으로 나오기 시작했습니다!"</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>Lisa T.</strong>
+                            <strong>
+                                Lisa T.
+                                <img src="public/people/lisa.png" alt="Lisa T.">
+                            </strong>
                             <span>
                                 <span data-lang="en">Germany, Intermediate Learner</span>
                                 <span data-lang="ko">독일, 중급 학습자</span>
@@ -1140,7 +1193,10 @@
                             이 프로그램 덕분에 마침내 '알고 있는 것'을 '말할 수 있는 것'으로 바꿨습니다."</span>
                         </p>
                         <div class="testimonial-author">
-                            <strong>Yuki S.</strong>
+                            <strong>
+                                Yuki S.
+                                <img src="public/people/yuki.png" alt="Yuki S.">
+                            </strong>
                             <span>
                                 <span data-lang="en">Japan, Advanced Learner</span>
                                 <span data-lang="ko">일본, 고급 학습자</span>
