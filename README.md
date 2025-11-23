@@ -71,6 +71,16 @@ php -S localhost:8000
 
 ## 🌐 배포 방법
 
+### Cloudflare Pages (권장) ⭐
+1. Cloudflare 계정 생성 (https://dash.cloudflare.com)
+2. Workers & Pages → Create application → Pages → Connect to Git
+3. GitHub 저장소 연결
+4. 빌드 설정:
+   - Build command: (비워두기)
+   - Build output directory: `.`
+5. 자동 배포 완료!
+6. 자세한 가이드: `CLOUDFLARE_MIGRATION_GUIDE.md` 참고
+
 ### GitHub Pages
 1. GitHub 저장소 생성
 2. 파일 업로드
