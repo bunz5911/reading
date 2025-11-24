@@ -86,10 +86,6 @@ php -S localhost:8000
 2. 파일 업로드
 3. Settings > Pages에서 배포 설정
 
-### Netlify / Vercel
-1. 프로젝트 폴더를 드래그 앤 드롭
-2. 자동 배포 완료
-
 ### 일반 웹 호스팅
 FTP로 파일들을 업로드하면 됩니다.
 
