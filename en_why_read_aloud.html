@@ -549,6 +549,140 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
+        /* Discount Banner Section */
+        .discount-banner {
+            background-image: url('public/img/0_0.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px 24px;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .discount-banner h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1.4;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 600;
+            margin: 12px 8px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* RaKorean Solution Section */
+        .rakorean-solution-section {
+            background-image: url('public/img/4 copy.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 60px 24px;
+            color: white;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .rakorean-solution-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .rakorean-solution-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .problem-box, .solution-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .problem-box h3, .solution-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .problem-box h3 {
+            color: #ffd93d;
+        }
+
+        .solution-box h3 {
+            color: #6bcf7f;
+        }
+
+        .solution-features {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .solution-features li {
+            padding: 16px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid #6bcf7f;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .solution-features li strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #ffd93d;
+        }
+
+        .benefit-highlight {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #ffd700;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .benefit-highlight p {
+            font-size: clamp(18px, 2.5vw, 24px);
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .fixed-header {
@@ -615,6 +749,47 @@
             .method-image {
                 margin: 16px auto;
             }
+
+            .discount-banner {
+                padding: 32px 16px;
+                margin-top: 70px;
+            }
+
+            .discount-banner h1 {
+                font-size: 22px;
+            }
+
+            .discount-badge {
+                display: block;
+                margin: 12px 0;
+                font-size: 14px;
+            }
+
+            .rakorean-solution-section {
+                padding: 40px 16px;
+            }
+
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .problem-box, .solution-box {
+                padding: 24px;
+            }
+
+            .problem-box h3, .solution-box h3 {
+                font-size: 20px;
+            }
+
+            .solution-features li {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .benefit-highlight {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -640,6 +815,93 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Discount Banner Section -->
+        <section class="discount-banner">
+            <h1>
+                <span data-lang="en">RaKorean: Read Aloud Korean.<br>Master Speaking Fluency.<br>Secure Your 20% Discount Today!</span>
+                <span data-lang="ko">RaKorean: Read Aloud Korean.<br>유창한 말하기를 마스터하세요.<br>오늘 20% 할인을 확보하세요!</span>
+            </h1>
+            <div class="discount-badge">
+                <span data-lang="en">FREE Early Access Registration is Open Now!</span>
+                <span data-lang="ko">무료 얼리 액세스 등록이 지금 열려있습니다!</span>
+            </div>
+            <div class="discount-badge">
+                <span data-lang="en">All Free Registrants Unlock 20% OFF Learning Coins Starting January 1st!</span>
+                <span data-lang="ko">모든 무료 등록자는 1월 1일부터 학습 코인 20% 할인을 받습니다!</span>
+            </div>
+        </section>
+
+        <!-- RaKorean Solution Section -->
+        <section class="rakorean-solution-section">
+            <div class="rakorean-solution-wrapper">
+                <h2 class="rakorean-solution-title">
+                    <span data-lang="en">Why RaKorean?</span>
+                    <span data-lang="ko">왜 RaKorean인가요?</span>
+                </h2>
+                
+                <div class="problem-solution-grid">
+                    <!-- Problem Box -->
+                    <div class="problem-box">
+                        <h3>
+                            <span data-lang="en">The Problem</span>
+                            <span data-lang="ko">문제점</span>
+                        </h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 16px; font-size: 16px; line-height: 1.6;">
+                                <span data-lang="en"><strong>Reading vs Speaking Gap</strong><br>You can read but can't speak naturally.</span>
+                                <span data-lang="ko"><strong>읽기와 말하기의 괴리</strong><br>읽을 수 있지만 자연스럽게 말할 수 없어요.</span>
+                            </li>
+                            <li style="margin-bottom: 16px; font-size: 16px; line-height: 1.6;">
+                                <span data-lang="en"><strong>Lack of Confidence</strong><br>You hesitate and freeze when speaking.</span>
+                                <span data-lang="ko"><strong>자신감 부족</strong><br>말할 때 망설이고 얼어붙어요.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Solution Box -->
+                    <div class="solution-box">
+                        <h3>
+                            <span data-lang="en">The RaKorean Solution</span>
+                            <span data-lang="ko">RaKorean 해결책</span>
+                        </h3>
+                        <ul class="solution-features">
+                            <li>
+                                <strong>
+                                    <span data-lang="en">Fluency First</span>
+                                    <span data-lang="ko">유창성 우선</span>
+                                </strong>
+                                <span data-lang="en"><strong>RaKorean (Read Aloud Korean)</strong> focuses on fluency training. Move Korean from your head to your mouth!</span>
+                                <span data-lang="ko"><strong>RaKorean (Read Aloud Korean)</strong>은 유창성 훈련에 중점을 둡니다. 머릿속 한국어를 입으로 옮기세요!</span>
+                            </li>
+                            <li>
+                                <strong>
+                                    <span data-lang="en">Practical Content</span>
+                                    <span data-lang="ko">실용적인 콘텐츠</span>
+                                </strong>
+                                <span data-lang="en">Improve practical language skills with short fairy tales at intermediate level (TOPIK 2+).</span>
+                                <span data-lang="ko">중급(TOPIK 2+) 수준의 짧은 동화로 실용적인 언어 사용 능력을 향상시킵니다.</span>
+                            </li>
+                            <li>
+                                <strong>
+                                    <span data-lang="en">K-Culture Community</span>
+                                    <span data-lang="ko">K-컬처 커뮤니티</span>
+                                </strong>
+                                <span data-lang="en">Connect with K-Pop and K-Drama fans to maintain your learning motivation.</span>
+                                <span data-lang="ko">K-Pop, K-Drama 팬들과 교류하며 학습 동기를 유지합니다.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="benefit-highlight">
+                    <p>
+                        <span data-lang="en">Don't miss the chance to be the first to access the 20% New Year Discount!</span>
+                        <span data-lang="ko">새해 20% 할인을 가장 먼저 받을 기회를 놓치지 마세요!</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-content">
@@ -759,8 +1021,8 @@
                     <div class="method-body">
                         <div class="method-problem">
                             <h4>
-                                <span data-lang="en">❌ The Problem:</span>
-                                <span data-lang="ko">❌ 문제:</span>
+                                <span data-lang="en">The Problem:</span>
+                                <span data-lang="ko">문제:</span>
                             </h4>
                             <p>
                                 <span data-lang="en">Your head is full of something.<br>But it's <strong>"not easy"</strong> to get it out.<br>Why?<br>You need to: search → check → output.<br>By the time you finish, you've missed your chance to speak.</span>
@@ -770,8 +1032,8 @@
                         
                         <div class="method-solution">
                             <h4>
-                                <span data-lang="en">✅ The Solution:</span>
-                                <span data-lang="ko">✅ 해결책:</span>
+                                <span data-lang="en">The Solution:</span>
+                                <span data-lang="ko">해결책:</span>
                             </h4>
                             <p>
                                 <span data-lang="en">Change knowledge to <strong>sound.</strong><br>Say it out loud. Your brain tags it with <strong>your voice.</strong><br>It becomes a <strong>precious memory,</strong> not just knowledge.<br>Then it becomes <strong>automated.</strong> Ready when you need it.</span>
@@ -781,8 +1043,8 @@
 
                         <div class="method-evidence">
                             <strong>
-                                <span data-lang="en">📚 Scientific Evidence:</span>
-                                <span data-lang="ko">📚 과학적 증거:</span>
+                                <span data-lang="en">Scientific Evidence:</span>
+                                <span data-lang="ko">과학적 증거:</span>
                             </strong>
                             <span data-lang="en"> Speaking out loud (Production) improves memory retention by up to 20% compared to silent reading. (MacLeod et al., 2010. University of Waterloo Study)</span>
                             <span data-lang="ko"> 소리내어 말하기(생산)는 조용히 읽는 것에 비해 기억 보존을 최대 20% 향상시킵니다. (MacLeod 외, 2010. 워털루 대학교 연구)</span>
@@ -808,8 +1070,8 @@
                     <div class="method-body">
                         <div class="method-problem">
                             <h4>
-                                <span data-lang="en">❌ The Problem:</span>
-                                <span data-lang="ko">❌ 문제:</span>
+                                <span data-lang="en">The Problem:</span>
+                                <span data-lang="ko">문제:</span>
                             </h4>
                             <p>
                                 <span data-lang="en">You hesitate. You miss your timing. Your rhythm breaks while speaking.<br>You worry about mistakes. Your speed becomes chaotic.<br>This process blocks natural speaking.</span>
@@ -819,8 +1081,8 @@
                         
                         <div class="method-solution">
                             <h4>
-                                <span data-lang="en">✅ The Solution:</span>
-                                <span data-lang="ko">✅ 해결책:</span>
+                                <span data-lang="en">The Solution:</span>
+                                <span data-lang="ko">해결책:</span>
                             </h4>
                             <p>
                                 <span data-lang="en"><strong>Reading Aloud</strong> means following native speakers in real-time.<br>Like a vending machine - it should pop out immediately.<br>Korean rhythm goes into your mouth muscle memory.<br>So words come out <strong>before you think.</strong></span>
@@ -830,8 +1092,8 @@
 
                         <div class="method-evidence">
                             <strong>
-                                <span data-lang="en">📚 Scientific Evidence:</span>
-                                <span data-lang="ko">📚 과학적 증거:</span>
+                                <span data-lang="en">Scientific Evidence:</span>
+                                <span data-lang="ko">과학적 증거:</span>
                             </strong>
                             <span data-lang="en"> Shadowing is proven to be the most effective technique for improving pronunciation accuracy and speaking fluency. (Hamada & Suzuki, 2022. Related Research)</span>
                             <span data-lang="ko"> 쉐도잉은 발음 정확도와 말하기 유창성을 향상시키는 가장 효과적인 기법으로 입증되었습니다. (Hamada & Suzuki, 2022. 관련 연구)</span>
@@ -875,8 +1137,8 @@
                     <div class="method-body">
                         <div class="method-problem">
                             <h4>
-                                <span data-lang="en">❌ The Problem:</span>
-                                <span data-lang="ko">❌ 문제:</span>
+                                <span data-lang="en">The Problem:</span>
+                                <span data-lang="ko">문제:</span>
                             </h4>
                             <p>
                                 <span data-lang="en">We often translate Korean into our own language.<br>When Korean comes in, we make it in our language, then translate it back to Korean.<br>Before we know it, we've missed all the timing.<br>When I speak, nobody understands what I mean.</span>
@@ -886,8 +1148,8 @@
                         
                         <div class="method-solution">
                             <h4>
-                                <span data-lang="en">✅ The Solution:</span>
-                                <span data-lang="ko">✅ 해결책:</span>
+                                <span data-lang="en">The Solution:</span>
+                                <span data-lang="ko">해결책:</span>
                             </h4>
                             <p>
                                 <span data-lang="en">You need to internalize what real Koreans say.<br>Listen with audio, read short stories out loud to internalize them in your mouth.<br>Accept Korean as Korean.<br>So you can respond right away.</span>
@@ -897,8 +1159,8 @@
 
                         <div class="method-evidence">
                             <strong>
-                                <span data-lang="en">📚 Scientific Evidence:</span>
-                                <span data-lang="ko">📚 과학적 증거:</span>
+                                <span data-lang="en">Scientific Evidence:</span>
+                                <span data-lang="ko">과학적 증거:</span>
                             </strong>
                             <span data-lang="en"> Reading practice focused on production practice, not just comprehension-focused study, improves vocabulary and grammar understanding more effectively. (Cognitive Load Theory)</span>
                             <span data-lang="ko"> 이해 중심 학습뿐만 아니라 말하기 연습에 중점을 둔 읽기 연습은 어휘와 문법 이해를 더 효과적으로 향상시킵니다. (인지 부하 이론)</span>
@@ -920,8 +1182,8 @@
                     <div class="method-body">
                         <div class="method-problem">
                             <h4>
-                                <span data-lang="en">❌ The Problem:</span>
-                                <span data-lang="ko">❌ 문제:</span>
+                                <span data-lang="en">The Problem:</span>
+                                <span data-lang="ko">문제:</span>
                             </h4>
                             <p>
                                 <span data-lang="en">You tried long texts.<br>Too long. You got overwhelmed. Couldn't even start.<br>Fatigue spikes. You don't even want to try.</span>
@@ -931,8 +1193,8 @@
                         
                         <div class="method-solution">
                             <h4>
-                                <span data-lang="en">✅ The Solution:</span>
-                                <span data-lang="ko">✅ 해결책:</span>
+                                <span data-lang="en">The Solution:</span>
+                                <span data-lang="ko">해결책:</span>
                             </h4>
                             <p>
                                 <span data-lang="en"><strong>Short stories</strong> are manageable. A length worth challenging.<br>You're not scared.<br>You can understand many parts.<br>You can practice every detail.<br>When you clear the mission, you don't miss much.</span>
@@ -942,8 +1204,8 @@
 
                         <div class="method-evidence">
                             <strong>
-                                <span data-lang="en">📚 Scientific Evidence:</span>
-                                <span data-lang="ko">📚 과학적 증거:</span>
+                                <span data-lang="en">Scientific Evidence:</span>
+                                <span data-lang="ko">과학적 증거:</span>
                             </strong>
                             <span data-lang="en"> Managing information load improves working memory efficiency and greatly increases learning success. (Hopman & MacDonald, 2018. Wisconsin-Madison University)</span>
                             <span data-lang="ko"> 정보 부하 관리는 학습 기억 효율을 향상시키고 학습 성공을 크게 증가시킵니다. (Hopman & MacDonald, 2018. 위스콘신-매디슨 대학교)</span>
